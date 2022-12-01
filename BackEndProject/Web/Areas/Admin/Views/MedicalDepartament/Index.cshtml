@@ -1,0 +1,39 @@
+﻿@using Web.Areas.Admin.ViewModels.MedicalDepartament
+@model MedicalDepartamentIndexVM
+
+<a class="btn btn-primary" asp-action="create" asp-controller="medicaldepartament">Create</a>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">CreateAt</th>
+            <th scope="col">ModifiedAt</th>
+            <th scope="col">Photo</th>
+            <th scope="col">Actions</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var medicalDepartament in Model.MedicalDepartaments)
+        {
+            <tr>
+                <td>@medicalDepartament.Id</td>
+                <td>@medicalDepartament.Title</td>
+                <td>@Html.Raw(medicalDepartament.Description)</td>
+                <td>@medicalDepartament.CreatedAt.ToShortDateString()</td>
+                <td>@medicalDepartament.ModifiedAt.ToShortDateString()</td>
+                <td><img class="img-thumbnail" style="width:50px ; height:50px; object-fit:cover" src="~/assets/img/@medicalDepartament.PhotoName" /></td>
+
+                <td>
+                    <a class="btn btn-primary" asp-action="update" asp-controller="medicaldepartament" asp-route-id="@medicalDepartament.Id">Update</a>
+                    <form method="post" asp-action="delete" asp-controller="medicaldepartament" asp-route-id="@medicalDepartament.Id">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

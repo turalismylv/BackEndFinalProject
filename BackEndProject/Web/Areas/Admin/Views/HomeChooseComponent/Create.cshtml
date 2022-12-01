@@ -1,0 +1,77 @@
+﻿@using Core.Constants
+@using Web.Areas.Admin.ViewModels.HomeChooseComponent
+@model HomeChooseComponentCreateVM
+
+<form enctype="multipart/form-data" asp-action="create" asp-controller="homechoosecomponent" method="post">
+
+   <div class="form-group">
+        <label asp-for="Title">Title</label>
+        <input class="form-control" asp-for="Title">
+        <span asp-validation-for="Title"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description">Description</label>
+        <textarea class="form-control" asp-for="Description"></textarea>
+        <span asp-validation-for="Description"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Text">Text</label>
+        <textarea class="form-control" asp-for="Text"></textarea>
+        <span asp-validation-for="Text"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Doctor">Doctor</label>
+        <input class="form-control" asp-for="Doctor">
+        <span asp-validation-for="Doctor"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Experience">Experience</label>
+        <input class="form-control" asp-for="Experience">
+        <span asp-validation-for="Experience"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Patient">Patient</label>
+        <input class="form-control" asp-for="Patient">
+        <span asp-validation-for="Patient"></span>
+    </div>
+      <div class="form-group">
+        <label asp-for="Quality">Quality</label>
+        <input class="form-control" asp-for="Quality">
+        <span asp-validation-for="Quality"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MainPhoto">MainPhoto</label>
+        <input class="form-control" asp-for="MainPhoto">
+        <span asp-validation-for="MainPhoto"></span>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Create</button>
+     <a class="btn btn-danger" asp-action="index" asp-controller="homechoosecomponent">Cancel</a>
+</form>
+@section Scripts{
+
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.2.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#Description'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#Text'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+}

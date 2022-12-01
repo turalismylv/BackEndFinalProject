@@ -1,0 +1,362 @@
+﻿@using Web.ViewModels.Home
+@model HomeIndexVM
+
+
+<main>
+    <!-- banner section starts -->
+    <section class="banner no-select">
+
+        @foreach (var homeMainSlider in Model.HomeMainSliders)
+        {
+            <div class="banner-page banner-page-@homeMainSlider.Id" style="background-image: url(/assets/img/@homeMainSlider.PhotoName);">
+                <div class="caption caption-1" data-aos="fade-up" data-aos-duration="2000">
+                    @homeMainSlider.Title
+                </div>
+                <div class="auxilary-caption" data-aos="fade-up" data-aos-duration="2000">
+                    @Html.Raw(homeMainSlider.Description)
+                </div>
+                <div class="button" data-aos="fade-up" data-aos-duration="2000">
+                    <a href="@homeMainSlider.LearnUrl"> Learn more </a>
+                </div>
+            </div>
+        }
+        <div class="bullets">
+            <div class="bullet bullet-1 selected"></div>
+            <div class="bullet bullet-2"></div>
+            <div class="bullet bullet-3"></div>
+        </div>
+
+        <div class="overlay">
+        </div>
+    </section>
+    <!-- banner section ends -->
+    <!-- vision section starts -->
+    <section class="vision no-select">
+        <div class="container">
+            <div class="vision-top row  justify-content-center" data-aos="fade-up" data-aos-duration="2000">
+                <div class="col-lg-10 text-center">
+                    <h2 class="sub-heading">Our vision</h2>
+                    <h2 class="heading">Combining Quality Care& Modern Conveniences.</h2>
+                    <span class="description">
+                        We started One Medical with the belief that clinical excellence
+                        commitment to service and
+                        a modern approach make for a truly great experience. To bring our vision to life, we
+                        listened to our patients. thoughtfully applied technology, and hired the best doctors to
+                        create a practice that is designed specifically to meet your needs.
+                    </span>
+                </div>
+            </div>
+            <div class="vision-bottom row">
+
+                @foreach (var ourVision in Model.ourVisions)
+                {
+                    <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="item" data-aos="fade-up" data-aos-duration="2000">
+                            <img src="~/assets/img/@ourVision.PhotoName" alt="" class="item-icon">
+                            <div class="item-content">
+                                <h5 class="title">@ourVision.Title</h5>
+                                <p class="item-text">@Html.Raw(ourVision.Description)</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </section>
+    <!-- vision section ends -->
+    <!-- about section starts -->
+    @if (Model.About != null)
+    {
+        <section class="about about-home no-select">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="about-content" data-aos="fade-up" data-aos-duration="2000">
+                            <span class="sub-heading">About Us</span>
+                            <h2 class="heading">
+                                @Model.About.Title
+                            </h2>
+                            <p class="about-content">
+                                @Html.Raw(Model.About.Description)
+                            </p>
+
+                            <div class="signature">
+                                <img src="~/assets/img/@Model.About.MainPhoto" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="about-images text-sm-center text-md-left" data-aos="fade-up"
+                         data-aos-duration="2000">
+                            @{
+                                int order = 1;
+                                foreach (var photo in Model.About.AboutPhotos)
+                                {
+                                    <img src="~/assets/img/@photo.Name" class="about-image about-image-@order mt-5 mt-md-0"></img>
+                                    order++;
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    }
+
+    <!-- about section ends -->
+    <!-- department section starts -->
+    <section class="department no-select">
+        <div class="container">
+            <div class="department-top row justify-content-center" data-aos="fade-up" data-aos-duration="2000">
+                <div class="col-lg-10 text-center">
+                    <h2 class="sub-heading">What we do best</h2>
+                    <h2 class="heading">Medical Departments</h2>
+                    <span class="description">
+                        Expert physician specialists and caring clinical staff provide you
+                        with an exceptional patient care is what sets Syring Medical Center apaert health care
+                        experience.
+                    </span>
+                </div>
+            </div>
+            <div class="department-center">
+                <div class="row ">
+
+
+                    @foreach (var medicalDepartament in Model.medicalDepartaments)
+                    {
+                        <div class="col-sm-12 col-lg-4 mt-4 mt-lg-0">
+                            <div class="item" data-aos="fade-up" data-aos-duration="2000">
+                                <img src="~/assets/img/@medicalDepartament.PhotoName" alt="" class="item-icon">
+                                <div class="item-content">
+                                    <h5 class="title">@medicalDepartament.Title</h5>
+                                    <p class="item-text">
+                                        @Html.Raw(medicalDepartament.Description)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+
+                </div>
+
+            </div>
+        </div>
+        <div class="department-bottom text-center">
+            <div class="button" data-aos="fade-up" data-aos-duration="2000"><a asp-action="index" asp-controller="medicaldepartament">View All Departments</a></div>
+        </div>
+        </div>
+    </section>
+    <!-- department section ends -->
+    <!-- video section starts -->
+    <section class="video" style="background-image: url(/assets/img/@Model.homeVideoComponent.CoverImg)" data-aos="fade-up"
+             data-aos-duration="2000">
+        <div class="video-overlay d-flex justify-content-center align-items-center">
+            <div class="play-button d-flex justify-content-center align-items-center">
+                <i class="fas fa-caret-right triangle"></i>
+                <div class="scaling-background"></div>
+            </div>
+        </div>
+    </section>
+    <!-- video section ends -->
+    <!-- doctors section starts -->
+    <section class="doctors no-select">
+        <div class="container">
+            <div class="doctors-top row d-flex justify-content-between" data-aos="fade-up" data-aos-duration="2000">
+                <h2 class="sub-heading">Our Professional Doctor</h2>
+                <div class="doctors-top-right">
+                    <span>View all members</span>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+            <div class="doctors-bottom row ">
+                <div class="col-sm-12 col-md-6 col-lg-3  text-center" data-aos="fade-up" data-aos-duration="2000">
+                    <div class="doctor-item">
+                        <img src="~/assets/images/doctor-1.png" alt="">
+                        <div class="doctor-info">
+                            <h4 class="doctor-name">Alex Koztex</h4>
+                            <p class="doctor-speciality">Dentis</p>
+                            <div class="social-media">
+                                <a href="#">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3 mt-5 mt-md-0 text-center" data-aos="fade-up"
+                     data-aos-duration="2000">
+                    <div class="doctor-item">
+                        <img src="~/assets/images/doctor-2.png" alt="">
+                        <div class="doctor-info">
+                            <h4 class="doctor-name">Mia Clark</h4>
+                            <p class="doctor-speciality">GYNECOLOGY</p>
+                            <div class="social-media">
+                                <a href="#">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3  mt-5 mt-lg-0 text-center" data-aos="fade-up"
+                     data-aos-duration="2000">
+                    <div class="doctor-item">
+                        <img src="~/assets/images/doctor-3.png" alt="">
+                        <div class="doctor-info">
+                            <h4 class="doctor-name">Alex Koztex</h4>
+                            <p class="doctor-speciality">Dentis</p>
+                            <div class="social-media">
+                                <a href="#">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3 mt-5 mt-lg-0 text-center" data-aos="fade-up"
+                     data-aos-duration="2000">
+                    <div class="doctor-item">
+                        <img src="~/assets/images/doctor-4.png" alt="">
+                        <div class="doctor-info">
+                            <h4 class="doctor-name">Alex Koztex</h4>
+                            <p class="doctor-speciality">Dentis</p>
+                            <div class="social-media">
+                                <a href="#">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- doctors section ends -->
+    <!-- why-choose section starts -->
+    <section class="why-choose no-select">
+        <div class="container">
+            <div class="row">
+                <div class="why-choose-left col-lg-6" data-aos="fade-up" data-aos-duration="2000">
+                    <h2 class="heading">
+                        @Model.HomeChooseComponent.Title
+                    </h2>
+                    @Html.Raw(Model.HomeChooseComponent.Description)
+
+                    @Html.Raw(Model.HomeChooseComponent.Text)
+
+                </div>
+                <div class="why-choose-right col-lg-6 text-lg-right" data-aos="fade-up" data-aos-duration="2000">
+                    <div style="background-image: url(/assets/img/@Model.HomeChooseComponent.PhotoName)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- why-choose section ends -->
+    <!-- count-to starts -->
+    <div class="container">
+        <div class="row align-items-center count-to no-select  " data-aos="fade-up" data-aos-duration="2000">
+            <div class=" col-12 col-md-4 col-lg-3  text-center count-item">
+                <i class="fas fa-plus count-plus"></i>
+                <p class='numscroller' data-min='1' data-max='@Model.HomeChooseComponent.Patient' data-delay='30' data-increment='10'></p>
+                <span class="satisfied-patients">Satisfied Patients</span>
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 mt-4 mt-md-0  text-center count-item">
+                <i class="fas fa-plus count-plus"></i>
+                <p class='numscroller' data-min='1' data-max='@Model.HomeChooseComponent.Doctor' data-delay='10' data-increment='5'></p>
+                <span class="pro-doctor">Professional Doctor</span>
+            </div>
+            <div class=" col-12 col-md-4 col-lg-3 mt-4 mt-md-0 text-center count-item">
+                <div class="d-flex justify-content-center">
+                    <p class='numscroller d-inline-block' data-min='1' data-max='@Model.HomeChooseComponent.Quality' data-delay='5'
+                       data-increment='2'></p>
+                    <p>%</p>
+                </div>
+                <span class="quality">Quality</span>
+            </div>
+            <div class="d-block  d-md-none d-lg-block col-12 col-lg-3 mt-4 mt-md-0 text-center count-item">
+                <i class="fas fa-plus count-plus plus-experience"></i>
+                <p class='numscroller' data-min='1' data-max='@Model.HomeChooseComponent.Experience' data-delay='2' data-increment='1'></p>
+                <span class="year-experience">Year Experience</span>
+            </div>
+        </div>
+    </div>
+    <!-- count-to ends -->
+    <!-- latest-news section starts -->
+    <section class="latest-news no-select">
+        <div class="container">
+            <div class="latest-news-top row d-flex justify-content-between align-items-center" data-aos="fade-up"
+                 data-aos-duration="2000">
+                <h2 class="heading">Lastest News</h2>
+            </div>
+            <div class="latest-news-bottom" data-aos="fade-up" data-aos-duration="2000">
+
+                @foreach (var lastestNew in Model.LastestNews)
+                {
+                    <div class="news-item">
+                        <div class="item-photo">
+                            <img src="~/assets/img/@lastestNew.PhotoName" alt="">
+                        </div>
+                        <div class="date-type  text-center">
+                            <span class="date">@lastestNew.Time</span>
+                            <span class="type">@lastestNew.Text</span>
+                        </div>
+                        <div class="item-text text-center">
+                           @lastestNew.Title
+                        </div>
+                    </div>
+                }
+
+              
+            </div>
+        </div>
+    </section>
+    <!-- latest-news section ends -->
+</main>
+
+<!-- modal section starts -->
+<section class="modal">
+    <div class="container">
+        <div class="quit-button d-flex justify-content-end"><i class="fas fa-times quit-x"></i></div>
+        <div class="modal-content">
+            <iframe class="modal-video" width="auto" height="600" src="@Model.homeVideoComponent.VideoUrl" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</section>
+<!-- modal section ends -->

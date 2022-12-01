@@ -1,0 +1,15 @@
+﻿@using Web.ViewModels.Faq
+@model FaqQuestionIndexVM
+
+
+@foreach (var faqQuestion in Model.FaqQuestions)
+{
+    <li data-aos="fade-up" data-aos-duration="2000">
+        <span>
+            @faqQuestion.Title
+        </span>
+        <div>
+            @Html.Raw(faqQuestion.Description)
+        </div>
+    </li>
+}

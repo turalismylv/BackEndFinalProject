@@ -1,0 +1,41 @@
+﻿
+@using Web.Areas.Admin.ViewModels.FaqQuestion
+@model FaqQuestionIndexVM
+
+<a class="btn btn-primary" asp-action="create" asp-controller="faqquestion">Create</a>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Category</th>
+            <th scope="col">CreateAt</th>
+            <th scope="col">ModifiedAt</th>
+            <th scope="col">Actions</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var faqQuestion in Model.FaqQuestions)
+        {
+            <tr>
+                <td>@faqQuestion.Id</td>
+                <td>@faqQuestion.Title</td>
+                <td>@Html.Raw(faqQuestion.Description)</td>
+                <td>@faqQuestion.FaqCategory.Title</td>
+                <td>@Html.Raw(faqQuestion.FaqCategoryId)</td>
+                <td>@faqQuestion.CreatedAt.ToShortDateString()</td>
+                <td>@faqQuestion.ModifiedAt.ToShortDateString()</td>
+
+                <td>
+                    <a class="btn btn-primary" asp-action="update" asp-controller="faqquestion" asp-route-id="@faqQuestion.Id">Update</a>
+                    <form method="post" asp-action="delete" asp-controller="faqquestion" asp-route-id="@faqQuestion.Id">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

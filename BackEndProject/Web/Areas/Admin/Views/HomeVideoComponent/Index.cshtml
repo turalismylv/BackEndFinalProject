@@ -1,0 +1,44 @@
+﻿@using Core.Entities
+@using Web.Areas.Admin.ViewModels.HomeVideoComponent
+@model HomeVideoComponentIndexVM
+
+@if (Model.HomeVideoComponent==null)
+{
+    <a class="btn btn-primary" asp-action="create" asp-controller="homevideocomponent">Create</a>
+}
+
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">CoverImage</th>
+            <th scope="col">VideoUrl</th>
+            <th scope="col">Created at</th>
+            <th scope="col">Modified at</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model.HomeVideoComponent != null)
+        {
+            <tr>
+                <td>@Model.HomeVideoComponent.Id</td>
+                <td><img class="img-thumbnail" style="width:50px ; height:50px; object-fit:cover" src="~/assets/img/@Model.HomeVideoComponent.CoverImg" /></td>
+                <td>@Model.HomeVideoComponent.VideoUrl</td>
+                <td>@Model.HomeVideoComponent.CreatedAt.ToShortDateString()</td>
+                <td>@Model.HomeVideoComponent.ModifiedAt.ToShortDateString()</td>
+                <td>
+                    <a class="btn btn-primary" asp-action="update" asp-controller="homevideocomponent" asp-route-id="@Model.HomeVideoComponent.Id">Update</a>
+                    <form method="post" asp-action="delete" asp-controller="homevideocomponent" asp-route-id="@Model.HomeVideoComponent.Id">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+
+
+
+    </tbody>
+</table>
+
