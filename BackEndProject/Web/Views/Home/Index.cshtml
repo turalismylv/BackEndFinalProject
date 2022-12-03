@@ -169,22 +169,25 @@
     }
     <!-- video section ends -->
     <!-- doctors section starts -->
-    @foreach (var doctor in Model.Doctors)
-    {
-        if (doctor.HomePageSee)
-        {
-            <section class="doctors no-select">
-                <div class="container">
-                    <div class="doctors-top row d-flex justify-content-between" data-aos="fade-up" data-aos-duration="2000">
-                        <h2 class="sub-heading">Our Professional Doctor</h2>
-                        <div class="doctors-top-right">
-                            <a asp-action="index" asp-controller="doctor"><span>View all members</span></a>
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-                    </div>
-                    <div class="doctors-bottom row ">
+
+    <section class="doctors no-select">
+        <div class="container">
+            <div class="doctors-top row d-flex justify-content-between" data-aos="fade-up" data-aos-duration="2000">
+                <h2 class="sub-heading">Our Professional Doctor</h2>
+                <div class="doctors-top-right">
+                    <a asp-action="index" asp-controller="doctor"><span>View all members</span></a>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+            <div class="doctors-bottom row ">
+
+                @foreach (var doctor in Model.Doctors)
+                {
+                    if (doctor.HomePageSee)
+                    {
                         <div class="col-sm-12 col-md-6 col-lg-3  text-center" data-aos="fade-up" data-aos-duration="2000">
                             <div class="doctor-item">
+
                                 <img style="width:180px; height:180px" src="~/assets/img/@doctor.MainPhoto" alt="">
                                 <div class="doctor-info">
                                     <h4 class="doctor-name">@doctor.FullName</h4>
@@ -201,15 +204,15 @@
                                         </a>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
+                    }
+                }
 
-                    </div>
-                </div>
-            </section>
-        }
-    }
+            </div>
+        </div>
+    </section>
+
     }
     <!-- doctors section ends -->
     <!-- why-choose section starts -->

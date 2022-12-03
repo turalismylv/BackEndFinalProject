@@ -9,5 +9,10 @@ namespace DataAccess.Repositories.Abstract
 {
     public interface IDoctorRepository : IRepository<Doctor>
     {
+        Task<List<Doctor>> PaginateDoctorsAsync(int page, int take);
+
+        Task<int> GetPageCountAsync(int take);
+
+        IQueryable<Doctor> FilterByTitle(string fullName);
     }
 }

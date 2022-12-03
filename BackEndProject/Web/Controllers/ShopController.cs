@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Web.Services.Abstract;
+using Web.ViewModels.Shop;
 
 namespace Web.Controllers
 {
@@ -14,9 +15,9 @@ namespace Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(ShopIndexVM model)
         {
-            var model = await _shopService.GetAllAsync();
+           model = await _shopService.GetAllAsync(model);
             return View(model);
         }
 

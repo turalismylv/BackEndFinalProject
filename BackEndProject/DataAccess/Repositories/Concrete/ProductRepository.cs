@@ -29,10 +29,11 @@ namespace DataAccess.Repositories.Concrete
             return await _context.Products.Where(p => p.ProductCategoryId == categoryId).ToListAsync();
         }
 
-        //public IQueryable<Product> FilterByTitle(string title)
-        //{
-        //    return _context.Products.Where(p => !string.IsNullOrEmpty(title) ? p.Title.Contains(title) : true);
-        //}
+
+        public IQueryable<Product> FilterByTitle(string title)
+        {
+            return _context.Products.Where(p => !string.IsNullOrEmpty(title) ? p.Title.Contains(title) : true);
+        }
     }
    
 }

@@ -1,6 +1,8 @@
-﻿using DataAccess.Repositories.Abstract;
+﻿using Core.Entities;
+using DataAccess.Repositories.Abstract;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 using Web.Services.Abstract;
 using Web.ViewModels.Doctor;
 
@@ -18,11 +20,23 @@ namespace Web.Services.Concrete
         }
 
 
-        public async Task<DoctorIndexVM> GetAllAsync()
+        public async Task<DoctorIndexVM> GetAllAsync(DoctorIndexVM model)
         {
-            var model = new DoctorIndexVM
+            var pageCount = await _doctorRepository.GetPageCountAsync(model.Take);
+
+            if (model.Page <= 0 || model.Page > pageCount) return model;
+
+            var doctors =await FilterDoctors(model).ToListAsync();
+
+             doctors = await _doctorRepository.PaginateDoctorsAsync(model.Page, model.Take);
+
+            model = new DoctorIndexVM
             {
-                Doctors = await _doctorRepository.GetAllAsync(),
+                Doctors = doctors,
+                Page = model.Page,
+                PageCount = pageCount,
+                Take = model.Take
+                
 
             };
             return model;
@@ -56,5 +70,12 @@ namespace Web.Services.Concrete
             return model;
 
         }
+
+        public IQueryable<Doctor> FilterDoctors(DoctorIndexVM model)
+        {
+            var doctors = _doctorRepository.FilterByTitle(model.FullName);
+            return doctors;
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Web.Services.Abstract;
+using Web.ViewModels.Doctor;
 
 namespace Web.Controllers
 {
@@ -12,9 +13,11 @@ namespace Web.Controllers
             _doctorService = doctorService;
         }
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(DoctorIndexVM model)
         {
-            var model = await _doctorService.GetAllAsync();
+
+
+            model = await _doctorService.GetAllAsync(model);
             return View(model);
         }
 

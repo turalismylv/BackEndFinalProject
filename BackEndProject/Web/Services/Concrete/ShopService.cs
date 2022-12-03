@@ -2,6 +2,7 @@
 using DataAccess.Repositories.Abstract;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 using Web.Services.Abstract;
 using Web.ViewModels.Shop;
 
@@ -22,14 +23,16 @@ namespace Web.Services.Concrete
         }
 
 
-        public async Task<ShopIndexVM> GetAllAsync()
+        public async Task<ShopIndexVM> GetAllAsync(ShopIndexVM model)
         {
             var category = await _productCategoryRepository.GetFirstAsync();
 
-            var model = new ShopIndexVM
+            var products = FilterProducts(model);
+
+            model = new ShopIndexVM
             {
                 ProductCategories = await _productCategoryRepository.GetAllCategoryAsync(),
-                Products = category != null ? await _productRepository.GetByCategoryIdAsync(category.Id) : new List<Product>()
+                Products = await products.ToListAsync()
             };
             return model;
 
@@ -48,14 +51,12 @@ namespace Web.Services.Concrete
 
         }
 
-        //private IQueryable<Product> FilterProducts(ShopProductIndexVM model)
-        //{
-        //    var products =_productRepository.FilterByTitle();
-            
+        public IQueryable<Product> FilterProducts(ShopIndexVM model)
+        {
+            var products = _productRepository.FilterByTitle(model.Title);
+            return products;
+        }
 
-        //    return products;
-        //}
 
-      
     }
 }

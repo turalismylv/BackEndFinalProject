@@ -28,9 +28,12 @@
                         <span class="line"></span>
                         <div class="search-doctor-content">
                             <div class="search-doctor-content-wrapper">
-                                <label for="">Doctor Name</label>
-                                <input type="search" placeholder="Enter doctor name" class="search-doctor-input">
-                                <div class="button search-button text-center">Search Now</div>
+
+                                <form method="get" asp-action="index" asp-controller="doctor">
+                                    <label asp-for="FullName">Doctor Name</label>
+                                    <input asp-for="FullName" type="search" placeholder="Enter doctor name" class="search-doctor-input">
+                                    <div class="button search-button text-center">Search Now</div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -55,10 +58,10 @@
                                     </div>
                                     <div class="doctor-info">
                                         <div class="doctor-name">@doctor.FullName</div>
-                                     @*   <div class="doctor-subtitle">
-                                            Hospital doctors examine patients so that they can diagnose and treat health
-                                            conditions and diseases.
-                                        </div>*@
+                                        @*   <div class="doctor-subtitle">
+                                    Hospital doctors examine patients so that they can diagnose and treat health
+                                    conditions and diseases.
+                                    </div>*@
                                         <div class="doctor-skill">
                                             @Html.Raw(doctor.Qualification)
                                         </div>
@@ -73,12 +76,43 @@
                             </div>
                         }
 
-                   
-                        <div class="pagination d-flex">
-                            <div class="pagination-element pagination-active">1</div>
-                            <div class="pagination-element">2</div>
-                            <div class="pagination-element">></div>
-                        </div>
+
+                        <ul class="pagination">
+                            <li class="page-item">
+                                @if (Model.Page > 1)
+                                {
+                                    <div>
+                                        @{
+                                            var prevPage = @Model.Page - 1;
+
+                                            <a itemprop="url" asp-action="index" asp-controller="doctor" asp-route-page="@prevPage" class="page-link" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        }
+                                    </div>
+                                }
+                            </li>
+                            @for (int i = 1; i <= Model.PageCount; i++)
+                            {
+                                <li class="@(Model.Page==i ? "active disabled" : "inactive")"><a asp-action="index" class="page-link " asp-controller="doctor" asp-route-page="@i">@i</a></li>
+                            }
+                            <li class="page-item">
+                                @if (Model.PageCount != Model.Page)
+                                {
+                                    <div>
+                                        @{
+                                            var nextPage = @Model.Page + 1;
+                                            <a itemprop="url" asp-action="index" asp-controller="doctor" asp-route-page="@nextPage" class="page-link" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        }
+                                    </div>
+                                }
+                            </li>
+                        </ul>
+
                     </div>
                 </div>
             </div>
