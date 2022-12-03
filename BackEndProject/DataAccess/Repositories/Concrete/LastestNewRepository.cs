@@ -19,9 +19,6 @@ namespace DataAccess.Repositories.Concrete
             _context = context;
         }
 
-      
-
-
 
         public async Task<List<LastestNew>> GetOrderByAsync()
         {

@@ -48,6 +48,7 @@ builder.Services.AddScoped<IFaqCategoryRepository, FaqCategoryRepository>();
 builder.Services.AddScoped<IFaqQuestionRepository, FaqQuestionRepository>();
 builder.Services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
 
 #endregion
 
@@ -58,6 +59,8 @@ builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IMedicalDepartamentService, MedicalDepartamentService>();
 builder.Services.AddScoped<IPriciningsService, PricingsService>();
 builder.Services.AddScoped<IFaqService, FaqService>();
+builder.Services.AddScoped<IShopService, ShopService>();
+builder.Services.AddScoped<IDoctorService, DoctorService>();
 builder.Services.AddScoped<AdminAbstractService.IAboutService, AdminConcreteService.AboutService>();
 builder.Services.AddScoped<AdminAbstractService.IOurVisionService, AdminConcreteService.OurVisionService>();
 builder.Services.AddScoped<AdminAbstractService.IHomeMainSliderService, AdminConcreteService.HomeMainSliderService>();
@@ -70,6 +73,8 @@ builder.Services.AddScoped<AdminAbstractService.IPriceService, AdminConcreteServ
 builder.Services.AddScoped<AdminAbstractService.IFaqCategoryService, AdminConcreteService.FaqCategoryService>();
 builder.Services.AddScoped<AdminAbstractService.IFaqQuestionService, AdminConcreteService.FaqQuestionService>();
 builder.Services.AddScoped<AdminAbstractService.IProductCategoryService, AdminConcreteService.ProductCategoryService>();
+builder.Services.AddScoped<AdminAbstractService.IProductService, AdminConcreteService.ProductService>();
+builder.Services.AddScoped<AdminAbstractService.IDoctorService, AdminConcreteService.DoctorService>();
 
 
 

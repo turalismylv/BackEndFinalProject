@@ -154,168 +154,119 @@
     </section>
     <!-- department section ends -->
     <!-- video section starts -->
-    <section class="video" style="background-image: url(/assets/img/@Model.homeVideoComponent.CoverImg)" data-aos="fade-up"
+    @if (Model.homeVideoComponent != null)
+    {
+        <section class="video" style="background-image: url(/assets/img/@Model.homeVideoComponent.CoverImg)" data-aos="fade-up"
              data-aos-duration="2000">
-        <div class="video-overlay d-flex justify-content-center align-items-center">
-            <div class="play-button d-flex justify-content-center align-items-center">
-                <i class="fas fa-caret-right triangle"></i>
-                <div class="scaling-background"></div>
+            <div class="video-overlay d-flex justify-content-center align-items-center">
+                <div class="play-button d-flex justify-content-center align-items-center">
+                    <i class="fas fa-caret-right triangle"></i>
+                    <div class="scaling-background"></div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+    }
     <!-- video section ends -->
     <!-- doctors section starts -->
-    <section class="doctors no-select">
-        <div class="container">
-            <div class="doctors-top row d-flex justify-content-between" data-aos="fade-up" data-aos-duration="2000">
-                <h2 class="sub-heading">Our Professional Doctor</h2>
-                <div class="doctors-top-right">
-                    <span>View all members</span>
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-            </div>
-            <div class="doctors-bottom row ">
-                <div class="col-sm-12 col-md-6 col-lg-3  text-center" data-aos="fade-up" data-aos-duration="2000">
-                    <div class="doctor-item">
-                        <img src="~/assets/images/doctor-1.png" alt="">
-                        <div class="doctor-info">
-                            <h4 class="doctor-name">Alex Koztex</h4>
-                            <p class="doctor-speciality">Dentis</p>
-                            <div class="social-media">
-                                <a href="#">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
+    @foreach (var doctor in Model.Doctors)
+    {
+        if (doctor.HomePageSee)
+        {
+            <section class="doctors no-select">
+                <div class="container">
+                    <div class="doctors-top row d-flex justify-content-between" data-aos="fade-up" data-aos-duration="2000">
+                        <h2 class="sub-heading">Our Professional Doctor</h2>
+                        <div class="doctors-top-right">
+                            <a asp-action="index" asp-controller="doctor"><span>View all members</span></a>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="doctors-bottom row ">
+                        <div class="col-sm-12 col-md-6 col-lg-3  text-center" data-aos="fade-up" data-aos-duration="2000">
+                            <div class="doctor-item">
+                                <img style="width:180px; height:180px" src="~/assets/img/@doctor.MainPhoto" alt="">
+                                <div class="doctor-info">
+                                    <h4 class="doctor-name">@doctor.FullName</h4>
+                                    <p class="doctor-speciality">@doctor.Specialty</p>
+                                    <div class="social-media">
+                                        <a href="@doctor.FbUrl">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                        <a href="@doctor.TwUrl">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a href="@doctor.LiUrl">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-3 mt-5 mt-md-0 text-center" data-aos="fade-up"
-                     data-aos-duration="2000">
-                    <div class="doctor-item">
-                        <img src="~/assets/images/doctor-2.png" alt="">
-                        <div class="doctor-info">
-                            <h4 class="doctor-name">Mia Clark</h4>
-                            <p class="doctor-speciality">GYNECOLOGY</p>
-                            <div class="social-media">
-                                <a href="#">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-3  mt-5 mt-lg-0 text-center" data-aos="fade-up"
-                     data-aos-duration="2000">
-                    <div class="doctor-item">
-                        <img src="~/assets/images/doctor-3.png" alt="">
-                        <div class="doctor-info">
-                            <h4 class="doctor-name">Alex Koztex</h4>
-                            <p class="doctor-speciality">Dentis</p>
-                            <div class="social-media">
-                                <a href="#">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-3 mt-5 mt-lg-0 text-center" data-aos="fade-up"
-                     data-aos-duration="2000">
-                    <div class="doctor-item">
-                        <img src="~/assets/images/doctor-4.png" alt="">
-                        <div class="doctor-info">
-                            <h4 class="doctor-name">Alex Koztex</h4>
-                            <p class="doctor-speciality">Dentis</p>
-                            <div class="social-media">
-                                <a href="#">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
+        }
+    }
+    }
     <!-- doctors section ends -->
     <!-- why-choose section starts -->
-    <section class="why-choose no-select">
-        <div class="container">
-            <div class="row">
-                <div class="why-choose-left col-lg-6" data-aos="fade-up" data-aos-duration="2000">
-                    <h2 class="heading">
-                        @Model.HomeChooseComponent.Title
-                    </h2>
-                    @Html.Raw(Model.HomeChooseComponent.Description)
+    @if (Model.HomeChooseComponent != null)
+    {
+        <section class="why-choose no-select">
+            <div class="container">
+                <div class="row">
+                    <div class="why-choose-left col-lg-6" data-aos="fade-up" data-aos-duration="2000">
+                        <h2 class="heading">
+                            @Model.HomeChooseComponent.Title
+                        </h2>
+                        @Html.Raw(Model.HomeChooseComponent.Description)
 
-                    @Html.Raw(Model.HomeChooseComponent.Text)
+                        @Html.Raw(Model.HomeChooseComponent.Text)
 
-                </div>
-                <div class="why-choose-right col-lg-6 text-lg-right" data-aos="fade-up" data-aos-duration="2000">
-                    <div style="background-image: url(/assets/img/@Model.HomeChooseComponent.PhotoName)">
+                    </div>
+                    <div class="why-choose-right col-lg-6 text-lg-right" data-aos="fade-up" data-aos-duration="2000">
+                        <div style="background-image: url(/assets/img/@Model.HomeChooseComponent.PhotoName)">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- why-choose section ends -->
-    <!-- count-to starts -->
-    <div class="container">
-        <div class="row align-items-center count-to no-select  " data-aos="fade-up" data-aos-duration="2000">
-            <div class=" col-12 col-md-4 col-lg-3  text-center count-item">
-                <i class="fas fa-plus count-plus"></i>
-                <p class='numscroller' data-min='1' data-max='@Model.HomeChooseComponent.Patient' data-delay='30' data-increment='10'></p>
-                <span class="satisfied-patients">Satisfied Patients</span>
-            </div>
-            <div class="col-12 col-md-4 col-lg-3 mt-4 mt-md-0  text-center count-item">
-                <i class="fas fa-plus count-plus"></i>
-                <p class='numscroller' data-min='1' data-max='@Model.HomeChooseComponent.Doctor' data-delay='10' data-increment='5'></p>
-                <span class="pro-doctor">Professional Doctor</span>
-            </div>
-            <div class=" col-12 col-md-4 col-lg-3 mt-4 mt-md-0 text-center count-item">
-                <div class="d-flex justify-content-center">
-                    <p class='numscroller d-inline-block' data-min='1' data-max='@Model.HomeChooseComponent.Quality' data-delay='5'
-                       data-increment='2'></p>
-                    <p>%</p>
+        </section>
+
+        <!-- why-choose section ends -->
+        <!-- count-to starts -->
+        <div class="container">
+            <div class="row align-items-center count-to no-select  " data-aos="fade-up" data-aos-duration="2000">
+                <div class=" col-12 col-md-4 col-lg-3  text-center count-item">
+                    <i class="fas fa-plus count-plus"></i>
+                    <p class='numscroller' data-min='1' data-max='@Model.HomeChooseComponent.Patient' data-delay='30' data-increment='10'></p>
+                    <span class="satisfied-patients">Satisfied Patients</span>
                 </div>
-                <span class="quality">Quality</span>
-            </div>
-            <div class="d-block  d-md-none d-lg-block col-12 col-lg-3 mt-4 mt-md-0 text-center count-item">
-                <i class="fas fa-plus count-plus plus-experience"></i>
-                <p class='numscroller' data-min='1' data-max='@Model.HomeChooseComponent.Experience' data-delay='2' data-increment='1'></p>
-                <span class="year-experience">Year Experience</span>
+                <div class="col-12 col-md-4 col-lg-3 mt-4 mt-md-0  text-center count-item">
+                    <i class="fas fa-plus count-plus"></i>
+                    <p class='numscroller' data-min='1' data-max='@Model.HomeChooseComponent.Doctor' data-delay='10' data-increment='5'></p>
+                    <span class="pro-doctor">Professional Doctor</span>
+                </div>
+                <div class=" col-12 col-md-4 col-lg-3 mt-4 mt-md-0 text-center count-item">
+                    <div class="d-flex justify-content-center">
+                        <p class='numscroller d-inline-block' data-min='1' data-max='@Model.HomeChooseComponent.Quality' data-delay='5'
+                       data-increment='2'></p>
+                        <p>%</p>
+                    </div>
+                    <span class="quality">Quality</span>
+                </div>
+                <div class="d-block  d-md-none d-lg-block col-12 col-lg-3 mt-4 mt-md-0 text-center count-item">
+                    <i class="fas fa-plus count-plus plus-experience"></i>
+                    <p class='numscroller' data-min='1' data-max='@Model.HomeChooseComponent.Experience' data-delay='2' data-increment='1'></p>
+                    <span class="year-experience">Year Experience</span>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- count-to ends -->
+        <!-- count-to ends -->
+    }
+
     <!-- latest-news section starts -->
     <section class="latest-news no-select">
         <div class="container">
@@ -336,12 +287,12 @@
                             <span class="type">@lastestNew.Text</span>
                         </div>
                         <div class="item-text text-center">
-                           @lastestNew.Title
+                            @lastestNew.Title
                         </div>
                     </div>
                 }
 
-              
+
             </div>
         </div>
     </section>

@@ -9,6 +9,7 @@ namespace Web.Services.Concrete
 {
     public class HomeService :IHomeService
     {
+        private readonly IDoctorRepository _doctorRepository;
         private readonly ILastestNewRepository _lastestNewRepository;
         private readonly IHomeChooseComponentRepository _homeChooseComponentRepository;
         private readonly IHomeVideoComponentRepository _homeVideoComponentRepository;
@@ -18,8 +19,9 @@ namespace Web.Services.Concrete
         private readonly IMedicalDepartamentRepository _medicalDepartamentRepository;
         private readonly ModelStateDictionary _modelState;
 
-        public HomeService(ILastestNewRepository lastestNewRepository,IHomeChooseComponentRepository homeChooseComponentRepository,IHomeVideoComponentRepository homeVideoComponentRepository ,IHomeMainSliderRepository homeMainSliderRepository,IAboutRepository aboutRepository,IOurVisionRepository ourVisionRepository, IActionContextAccessor actionContextAccessor,IMedicalDepartamentRepository medicalDepartamentRepository)
+        public HomeService(IDoctorRepository doctorRepository,ILastestNewRepository lastestNewRepository,IHomeChooseComponentRepository homeChooseComponentRepository,IHomeVideoComponentRepository homeVideoComponentRepository ,IHomeMainSliderRepository homeMainSliderRepository,IAboutRepository aboutRepository,IOurVisionRepository ourVisionRepository, IActionContextAccessor actionContextAccessor,IMedicalDepartamentRepository medicalDepartamentRepository)
         {
+            _doctorRepository = doctorRepository;
             _lastestNewRepository = lastestNewRepository;
             _homeChooseComponentRepository = homeChooseComponentRepository;
             _homeVideoComponentRepository = homeVideoComponentRepository;
@@ -41,7 +43,8 @@ namespace Web.Services.Concrete
                 About=await _aboutRepository.GetWithPhotosAsync(),
                 homeVideoComponent=await _homeVideoComponentRepository.GetAsync(),
                 HomeChooseComponent=await _homeChooseComponentRepository.GetAsync(),
-                LastestNews=await _lastestNewRepository.GetOrderByAsync()
+                LastestNews=await _lastestNewRepository.GetOrderByAsync(),
+                Doctors=await _doctorRepository.GetAllAsync(),
             };
             return model;
 

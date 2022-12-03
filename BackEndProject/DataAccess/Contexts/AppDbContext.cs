@@ -27,8 +27,12 @@ namespace DataAccess.Contexts
         public DbSet<Price> Prices { get; set; }
         public DbSet<FaqQuestion> FaqQuestions { get; set; }
         public DbSet<FaqCategory> FaqCategories { get; set; }
-        public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<Basket> Baskets { get; set; }
+        public DbSet<BasketProduct> BasketProducts { get; set; }
+        public DbSet<Doctor> Doctors { get; set; }
+        
 
     }
 }

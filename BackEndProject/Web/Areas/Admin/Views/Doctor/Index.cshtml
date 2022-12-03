@@ -1,0 +1,41 @@
+﻿@using Web.Areas.Admin.ViewModels.Doctor
+@model DoctorIndexVM
+
+<a class="btn btn-primary" asp-action="create" asp-controller="doctor">Create</a>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">FullName</th>
+            <th scope="col">HomePageSee</th>
+            <th scope="col">PhoneNumber</th>
+            <th scope="col">CreateAt</th>
+            <th scope="col">ModifiedAt</th>
+            <th scope="col">Photo</th>
+            <th scope="col">Actions</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var doctor in Model.Doctors)
+        {
+            <tr>
+                <td>@doctor.Id</td>
+                <td>@doctor.FullName</td>
+                 <td>@doctor.HomePageSee</td>
+                 <td>@doctor.PhoneNumber</td>
+                <td>@doctor.CreatedAt.ToShortDateString()</td>
+                <td>@doctor.ModifiedAt.ToShortDateString()</td>
+                <td><img class="img-thumbnail" style="width:50px ; height:50px; object-fit:cover" src="~/assets/img/@doctor.MainPhoto" /></td>
+
+                <td>
+                    <a class="btn btn-primary" asp-action="update" asp-controller="doctor" asp-route-id="@doctor.Id">Update</a>
+                    <form method="post" asp-action="delete" asp-controller="doctor" asp-route-id="@doctor.Id">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

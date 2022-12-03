@@ -1,12 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Web.Services.Abstract;
 
 namespace Web.Controllers
 {
     public class ShopController : Controller
     {
-        public IActionResult Index()
+        private readonly IShopService _shopService;
+
+        public ShopController(IShopService shopService)
         {
-            return View();
+
+            _shopService = shopService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            var model = await _shopService.GetAllAsync();
+            return View(model);
+        }
+
+        public async Task<IActionResult> CategoryProduct(int id)
+        {
+            var model = await _shopService.CategoryProductAsync(id);
+
+            return PartialView("_ProductPartial", model);
+
         }
     }
 }

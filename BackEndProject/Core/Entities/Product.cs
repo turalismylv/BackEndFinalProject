@@ -11,12 +11,9 @@ namespace Core.Entities
     {
 
         public string Title { get; set; }
-
         public string PhotoName { get; set; }
-
         public double Price { get; set; }
-
-        public int CategoryId { get; set; }
+        public int ProductCategoryId { get; set; }
         public ProductCategory ProductCategory { get; set; }
     }
 }

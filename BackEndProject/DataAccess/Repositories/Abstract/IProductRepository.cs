@@ -9,5 +9,9 @@ namespace DataAccess.Repositories.Abstract
 {
     public interface IProductRepository : IRepository<Product>
     {
+        Task<List<Product>> GetAllGetCategoryAsync();
+        Task<List<Product>> GetByCategoryIdAsync(int categoryId);
+
+        //IQueryable<Product> FilterByTitle(string title);
     }
 }
