@@ -25,10 +25,7 @@ namespace Web.Services.Concrete
             var pageCount = await _doctorRepository.GetPageCountAsync(model.Take);
 
             if (model.Page <= 0 || model.Page > pageCount) return model;
-
-            var doctors =await FilterDoctors(model).ToListAsync();
-
-             doctors = await _doctorRepository.PaginateDoctorsAsync(model.Page, model.Take);
+            var doctors = await PaginateDoctorsAsync(model.Page, model.Take,model);
 
             model = new DoctorIndexVM
             {
@@ -75,6 +72,16 @@ namespace Web.Services.Concrete
         {
             var doctors = _doctorRepository.FilterByTitle(model.FullName);
             return doctors;
+        }
+
+
+        public async Task<List<Doctor>> PaginateDoctorsAsync(int page, int take,DoctorIndexVM model)
+        {
+
+            return await FilterDoctors(model)
+                 .OrderByDescending(b => b.Id)
+                 .Skip((page - 1) * take).Take(take)
+                 .ToListAsync();
         }
 
     }

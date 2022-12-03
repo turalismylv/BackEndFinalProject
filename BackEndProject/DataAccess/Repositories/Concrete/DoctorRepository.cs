@@ -20,14 +20,7 @@ namespace DataAccess.Repositories.Concrete
             _context = context;
         }
 
-        public async Task<List<Doctor>> PaginateDoctorsAsync(int page, int take)
-        {
-
-            return await _context.Doctors
-                 .OrderByDescending(b => b.Id)
-                 .Skip((page - 1) * take).Take(take)
-                 .ToListAsync();
-        }
+     
 
         public async Task<int> GetPageCountAsync(int take)
         {
