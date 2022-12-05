@@ -44,7 +44,7 @@ namespace Web.Services.Concrete
                 homeVideoComponent=await _homeVideoComponentRepository.GetAsync(),
                 HomeChooseComponent=await _homeChooseComponentRepository.GetAsync(),
                 LastestNews=await _lastestNewRepository.GetOrderByAsync(),
-                Doctors=await _doctorRepository.GetAllAsync(),
+                Doctors=await _doctorRepository.GetHomeDoctorAsync(),
             };
             return model;
 

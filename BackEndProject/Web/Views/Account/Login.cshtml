@@ -33,6 +33,7 @@
         <div class="container">
             <form  class="login-form" method="post" asp-action="login" asp-controller="account">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="ReturnUrl" type="hidden" value="@returnUrl" />
                 <div class="form-group">
                     <label asp-for="Username"></label>
                     <input class="form-control" asp-for="Username" />

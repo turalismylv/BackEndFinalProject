@@ -806,7 +806,7 @@ $(document).ready(function () {
         });
       }
   }
-  GetProductsinCart()
+  //GetProductsinCart()
   //  #endregion ShowProductsinCart
 
 

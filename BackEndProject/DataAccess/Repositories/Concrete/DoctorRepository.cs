@@ -29,11 +29,29 @@ namespace DataAccess.Repositories.Concrete
 
         }
 
+        public async Task<List<Doctor>> Filter(string fullName,int page,int take)
+        {
+            var doctors=FilterByTitle(fullName);
+            return await PaginateDoctorsAsync(doctors, page, take);
+        }
+
+
         public IQueryable<Doctor> FilterByTitle(string fullName)
         {
             return _context.Doctors.Where(p => !string.IsNullOrEmpty(fullName) ? p.FullName.Contains(fullName) : true);
         }
 
+        public async Task<List<Doctor>> PaginateDoctorsAsync(IQueryable<Doctor> doctors, int page, int take)
+        {
+            return await doctors
+                 .OrderByDescending(b => b.Id)
+                 .Skip((page - 1) * take).Take(take)
+                 .ToListAsync();
+        }
 
+        public async Task<List<Doctor>> GetHomeDoctorAsync()
+        {
+            return await _context.Doctors.Where(d=>d.HomePageSee).ToListAsync();
+        }
     }
 }

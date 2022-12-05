@@ -13,5 +13,10 @@ namespace DataAccess.Repositories.Abstract
         Task<int> GetPageCountAsync(int take);
 
         IQueryable<Doctor> FilterByTitle(string fullName);
-    }
+        Task<List<Doctor>> PaginateDoctorsAsync(IQueryable<Doctor> doctors, int page, int take);
+        Task<List<Doctor>> Filter(string fullName, int page, int take);
+        Task<List<Doctor>> GetHomeDoctorAsync();
+
+
+        }
 }

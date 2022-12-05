@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Web.Services.Abstract;
 
 namespace Web.Controllers
 {
+  
     public class FaqController : Controller
     {
-
+      
         private readonly IFaqService _faqService;
 
         public FaqController(IFaqService faqService)
@@ -25,7 +27,6 @@ namespace Web.Controllers
             var model = await _faqService.CategoryQuestionAsync(id);
 
             return PartialView("_QuestionPartial", model);
-
         }
     }
 }

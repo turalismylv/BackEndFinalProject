@@ -49,5 +49,73 @@
         })
 
     })
+
+    $(document).on('click', '#addToCart', function () {
+        var id = $(this).data('id');
+        console.log("Avara")
+        $.ajax({
+            method: "POST",
+            url: "/basket/AddProduct",
+            data: {
+                id: id
+
+            },
+            success: function (result) {
+
+                console.log(result);
+
+            }
+        })
+    })
+
+    $(document).on('click', '#deleteButton', function () {
+        var id = $(this).data('id');
+
+        console.log("sil")
+
+        $.ajax({
+            method: "POST",
+            url: "/basket/delete",
+            data: {
+                id: id
+            },
+            success: function (result) {
+                $(`.basketProduct[id=${id}]`).remove();
+            }
+
+        })
+    })
+
+    $(document).on('click', '#upcount', function () {
+        var id = $(this).data('id');
+        console.log("artir")
+        $.ajax({
+            method: "POST",
+            url: "/basket/UpCountProduct",
+            data: {
+                id: id
+            },
+            success: function (result) {
+                console.log(result);
+            }
+
+        })
+    })
+
+    $(document).on('click', '#downcount', function () {
+        var id = $(this).data('id');
+
+        $.ajax({
+            method: "POST",
+            url: "/basket/downcountproduct",
+            data: {
+                id: id
+            },
+            success: function (result) {
+                console.log(result);
+            }
+
+        })
+    })
 })
     
