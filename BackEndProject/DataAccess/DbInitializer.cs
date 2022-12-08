@@ -38,7 +38,7 @@ namespace DataAccess
 
                 };
 
-                var result = await userManager.CreateAsync(user, "Admin12345678*");
+                var result = await userManager.CreateAsync(user, "admin");
                 if (!result.Succeeded)
                 {
 

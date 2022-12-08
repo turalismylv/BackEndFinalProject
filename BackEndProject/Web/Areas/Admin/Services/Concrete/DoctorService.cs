@@ -36,6 +36,19 @@ namespace Web.Areas.Admin.Services.Concrete
         {
             if (!_modelState.IsValid) return false;
 
+            var isExist = await _doctorRepository.AnyAsync(c => c.Email.Trim().ToLower() == model.Email.Trim().ToLower());
+            if (isExist)
+            {
+                _modelState.AddModelError("Email", "Bu email  mövcuddur");
+                return false;
+            }
+
+            var isNumber = await _doctorRepository.AnyAsync(c => c.PhoneNumber.Trim().ToLower() == model.PhoneNumber.Trim().ToLower());
+            if (isNumber)
+            {
+                _modelState.AddModelError("PhoneNumber", "Bu number mövcuddur");
+                return false;
+            }
 
             if (!_fileService.IsImage(model.MainPhoto))
             {
@@ -137,7 +150,19 @@ namespace Web.Areas.Admin.Services.Concrete
         {
             if (!_modelState.IsValid) return false;
 
-         
+            var isExist = await _doctorRepository.AnyAsync(c => c.Email.Trim().ToLower() == model.Email.Trim().ToLower() && c.Id != model.Id);
+            if (isExist)
+            {
+                _modelState.AddModelError("Email", "Bu email  mövcuddur");
+                return false;
+            }
+            var isNumber = await _doctorRepository.AnyAsync(c => c.PhoneNumber.Trim().ToLower() == model.PhoneNumber.Trim().ToLower() && c.Id != model.Id);
+            if (isNumber)
+            {
+                _modelState.AddModelError("PhoneNumber", "Bu number mövcuddur");
+                return false;
+            }
+
             if (model.MainPhoto != null)
             {
                 if (!_fileService.IsImage(model.MainPhoto))

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "FBE1OWUNwu+etF68Da1NsJqVFu4LM+Vh/YL7Y+QFMYI=",
+  "Hash": "3MnkjdzFFy5ITdPEqOKB+rxpI16r3PNvYfqqjloKuPQ=",
   "Source": "Web",
   "BasePath": "_content/Web",
   "Mode": "Default",
@@ -34969,23 +34969,6 @@
       "OriginalItemSpec": "wwwroot\\assets\\img\\ba94d477-5f69-4e85-a800-0f64c9a9cf72_turaldi.png"
     },
     {
-      "Identity": "C:\\Users\\tursl\\OneDrive\\Desktop\\CODEACADEMY\\HomeWorks\\BackEndFinalProject\\BackEndProject\\Web\\wwwroot\\assets\\img\\bc046c5a-3578-419f-9af7-7e48fa5e0853_avatar-5.jpg",
-      "SourceId": "Web",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tursl\\OneDrive\\Desktop\\CODEACADEMY\\HomeWorks\\BackEndFinalProject\\BackEndProject\\Web\\wwwroot\\",
-      "BasePath": "_content/Web",
-      "RelativePath": "assets/img/bc046c5a-3578-419f-9af7-7e48fa5e0853_avatar-5.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\img\\bc046c5a-3578-419f-9af7-7e48fa5e0853_avatar-5.jpg"
-    },
-    {
       "Identity": "C:\\Users\\tursl\\OneDrive\\Desktop\\CODEACADEMY\\HomeWorks\\BackEndFinalProject\\BackEndProject\\Web\\wwwroot\\assets\\img\\bccd2708-b48f-4c76-a8ae-a966b0f018ef_clinic2.jpg",
       "SourceId": "Web",
       "SourceType": "Discovered",
@@ -35154,23 +35137,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\d86bb99e-6c49-4b0f-a4f1-b37bdb066dd2_clinic2.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\tursl\\OneDrive\\Desktop\\CODEACADEMY\\HomeWorks\\BackEndFinalProject\\BackEndProject\\Web\\wwwroot\\assets\\img\\e1764dc8-c421-4eb2-91de-5a2f2110fa02_avatar-4.jpg",
-      "SourceId": "Web",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tursl\\OneDrive\\Desktop\\CODEACADEMY\\HomeWorks\\BackEndFinalProject\\BackEndProject\\Web\\wwwroot\\",
-      "BasePath": "_content/Web",
-      "RelativePath": "assets/img/e1764dc8-c421-4eb2-91de-5a2f2110fa02_avatar-4.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\img\\e1764dc8-c421-4eb2-91de-5a2f2110fa02_avatar-4.jpg"
     },
     {
       "Identity": "C:\\Users\\tursl\\OneDrive\\Desktop\\CODEACADEMY\\HomeWorks\\BackEndFinalProject\\BackEndProject\\Web\\wwwroot\\assets\\img\\e1f44a18-0362-4313-8a63-934c9c021914_product-7.jpg",

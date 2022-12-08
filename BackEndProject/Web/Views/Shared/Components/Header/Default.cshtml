@@ -71,18 +71,18 @@
                         }
 
                     </ul>
-                    <div class="search-basket-menu d-flex align-items-center">
-                        <div class="search d-none d-md-block"><img src="~/assets/images/search-icon.png" alt=""></div>
-                        <div class="basket" id="openbasket">
-                            <img src="~/assets/images/shop-basket.png" alt="">
-                            <span class="cart-items-count text-center" id="minibasketcount">@Model.Count</span>
-                        </div>
-                        <div class="burger-menu d-block d-xl-none"><i class="fas fa-bars"></i></div>
-                    </div>
-
 
                     @if (User.Identity.IsAuthenticated)
                     {
+
+                        <div class="search-basket-menu d-flex align-items-center">
+                            <div class="search d-none d-md-block"><img src="~/assets/images/search-icon.png" alt=""></div>
+                            <div class="basket" id="openbasket">
+                                <img src="~/assets/images/shop-basket.png" alt="">
+                                <span class="cart-items-count text-center" id="minibasketcount">@Model.Count</span>
+                            </div>
+                            <div class="burger-menu d-block d-xl-none"><i class="fas fa-bars"></i></div>
+                        </div>
                         <div class="pt-4">
                             <span class="title" style="padding-top:40px">@User.Identity.Name</span>
                             <button type="button" class="btn btn-danger"><a asp-action="logout" asp-controller="account">Logout</a></button>
@@ -92,22 +92,20 @@
                     }
                 </nav>
                 <div class="mini-cart" style="overflow:scroll">
-                   
-                    
-                    
-                    
+
+
                     <ul class="cart-items" id="cartitemsdi">
-                    @*    @foreach (var basketProduct in Model.Basket.BasketProducts)
+                        @*    @foreach (var basketProduct in Model.Basket.BasketProducts)
                         {
-                            <div product-id="@basketProduct.ProductId" id="@basketProduct.Id" class="cart-item">
-                                <div class="cart-item-left">
-                                    <div class="cart-product-image" style="background-image: url(/assets/img/@basketProduct.Product.PhotoName)">
-                                    </div>
-                                </div>
-                                <div class="cart-item-right">
-                                    <p class="cart-product-name">@basketProduct.Product.Title</p><span class="cart-product-price-quantity"> $@basketProduct.Product.Price</span>
-                                </div><i class="far fa-trash-alt delete-btn"></i>
-                            </div>
+                        <div product-id="@basketProduct.ProductId" id="@basketProduct.Id" class="cart-item">
+                        <div class="cart-item-left">
+                        <div class="cart-product-image" style="background-image: url(/assets/img/@basketProduct.Product.PhotoName)">
+                        </div>
+                        </div>
+                        <div class="cart-item-right">
+                        <p class="cart-product-name">@basketProduct.Product.Title</p><span class="cart-product-price-quantity"> $@basketProduct.Product.Price</span>
+                        </div><i class="far fa-trash-alt delete-btn"></i>
+                        </div>
                         }*@
 
                     </ul>

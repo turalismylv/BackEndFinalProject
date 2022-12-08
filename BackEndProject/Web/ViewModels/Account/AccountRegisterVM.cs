@@ -5,8 +5,8 @@ namespace Web.ViewModels.Account
     public class AccountRegisterVM
     {
 
-        
 
+        [EmailAddress]
         [Required, MaxLength(100), DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 

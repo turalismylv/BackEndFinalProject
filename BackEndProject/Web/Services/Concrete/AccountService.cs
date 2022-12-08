@@ -14,7 +14,9 @@ namespace Web.Services.Concrete
         private readonly ModelStateDictionary _modelState;
 
         public AccountService(UserManager<User> userManager,
-            SignInManager<User> signInManager, IActionContextAccessor actionContextAccessor)
+            SignInManager<User> signInManager,
+            IActionContextAccessor actionContextAccessor
+            )
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -24,6 +26,13 @@ namespace Web.Services.Concrete
         public async Task<bool> RegisterAsync(AccountRegisterVM model)
         {
             if (!_modelState.IsValid) return false;
+
+            var isExist = await _userManager.FindByEmailAsync(model.Email);
+            if (isExist!=null)
+            {
+                _modelState.AddModelError("Email", "Bu email  mövcuddur");
+                return false;
+            }
 
             var user = new User
             {
