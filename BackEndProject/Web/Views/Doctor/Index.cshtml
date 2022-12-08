@@ -85,7 +85,7 @@
                                         @{
                                             var prevPage = @Model.Page - 1;
 
-                                            <a itemprop="url" asp-action="index" asp-controller="doctor" asp-route-page="@prevPage" class="page-link" aria-label="Previous">
+                                            <a itemprop="url" asp-action="index" asp-controller="doctor" asp-route-fullname="@Model.FullName" asp-route-page="@prevPage" class="page-link" aria-label="Previous">
                                                 <span aria-hidden="true">&laquo;</span>
                                                 <span class="sr-only">Previous</span>
                                             </a>
@@ -95,7 +95,7 @@
                             </li>
                             @for (int i = 1; i <= Model.PageCount; i++)
                             {
-                                <li class="@(Model.Page==i ? "active disabled" : "inactive")"><a asp-action="index" class="page-link " asp-controller="doctor" asp-route-page="@i">@i</a></li>
+                                <li class="@(Model.Page==i ? "active disabled" : "inactive")"><a asp-action="index" asp-route-fullname="@Model.FullName" class="page-link " asp-controller="doctor" asp-route-page="@i">@i</a></li>
                             }
                             <li class="page-item">
                                 @if (Model.PageCount != Model.Page)
@@ -103,7 +103,7 @@
                                     <div>
                                         @{
                                             var nextPage = @Model.Page + 1;
-                                            <a itemprop="url" asp-action="index" asp-controller="doctor" asp-route-page="@nextPage" class="page-link" aria-label="Next">
+                                            <a itemprop="url" asp-action="index" asp-controller="doctor" asp-route-fullname="@Model.FullName" asp-route-page="@nextPage" class="page-link" aria-label="Next">
                                                 <span aria-hidden="true">&raquo;</span>
                                                 <span class="sr-only">Next</span>
                                             </a>

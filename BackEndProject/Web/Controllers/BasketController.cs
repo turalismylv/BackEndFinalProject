@@ -20,51 +20,61 @@ namespace Web.Controllers
 
         {
 
-           var model = await _basketService.GetAsync(User);
+           var model = await _basketService.GetAsync();
             return View(model);
         }
 
         [HttpPost]
         public async Task<IActionResult> AddProduct(BasketAddVM model)
         {
-            var isSucceeded = await _basketService.Add(model, User);
+            var isSucceeded = await _basketService.Add(model);
             if (isSucceeded) return Ok();
-            return View(model);
+            return BadRequest();
         }
 
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-            var isSucceeded = await _basketService.DeleteBasketProduct(id,User);
+            var isSucceeded = await _basketService.DeleteBasketProduct(id);
             if (isSucceeded) return Ok();
-            return View();
+            return BadRequest();
 
         }
 
         [HttpPost]
         public async Task<IActionResult> UpCountProduct(int id)
         {
-            var isSucceeded = await _basketService.UpCount(id, User);
+            var isSucceeded = await _basketService.UpCount(id);
             if (isSucceeded) return RedirectToAction(nameof(Index));
-            return View();
+            return BadRequest();
 
         }
 
         [HttpPost]
         public async Task<IActionResult> DownCountProduct(int id)
         {
-            var isSucceeded = await _basketService.DownCount(id, User);
+            var isSucceeded = await _basketService.DownCount(id);
             if (isSucceeded) return RedirectToAction(nameof(Index));
-            return View();
+            return BadRequest();
 
         }
 
         [HttpPost]
         public async Task<IActionResult> Clear()
         {
-            var isSucceeded = await _basketService.ClearBasketProduct(User);
+            var isSucceeded = await _basketService.ClearBasketProduct();
             if (isSucceeded) return RedirectToAction(nameof(Index));
-            return View();
+            return BadRequest();
+
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> MiniBasket()
+        {
+            var model = await _basketService.GetAsync();
+            
+            return PartialView("_MiniBasketPartial",model);
 
         }
     }

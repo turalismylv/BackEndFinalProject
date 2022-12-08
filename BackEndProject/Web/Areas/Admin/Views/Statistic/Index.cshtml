@@ -1,0 +1,36 @@
+﻿@using Web.Areas.Admin.ViewModels.Statistic
+@model StatisticIndexVM
+
+<a class="btn btn-primary" asp-action="create" asp-controller="statistic">Create</a>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">CreateAt</th>
+            <th scope="col">ModifiedAt</th>
+            <th scope="col">Actions</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var statistic in Model.Statistics)
+        {
+            <tr>
+                <td>@statistic.Id</td>
+                <td>@statistic.Title</td>
+                <td>@statistic.Quantity</td>
+                <td>@statistic.CreatedAt.ToShortDateString()</td>
+                <td>@statistic.ModifiedAt.ToShortDateString()</td>
+                <td>
+                    <a class="btn btn-primary" asp-action="update" asp-controller="statistic" asp-route-id="@statistic.Id">Update</a>
+                    <form method="post" asp-action="delete" asp-controller="statistic" asp-route-id="@statistic.Id">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

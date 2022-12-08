@@ -34,6 +34,13 @@ namespace DataAccess.Repositories.Concrete
         {
             return _context.Products.Where(p => !string.IsNullOrEmpty(title) ? p.Title.Contains(title) : true);
         }
+
+        public async Task<Product> GetProduct(int productId)
+        {
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == productId);
+
+            return product;
+        }
     }
    
 }

@@ -1,25 +1,31 @@
-﻿@using Web.ViewModels.Home
+﻿@using System.Web
+@using Web.ViewModels.Home
 @model HomeIndexVM
 
 
 <main>
     <!-- banner section starts -->
     <section class="banner no-select">
+        @{
+            int videoOrder = 1;
 
-        @foreach (var homeMainSlider in Model.HomeMainSliders)
-        {
-            <div class="banner-page banner-page-@homeMainSlider.Id" style="background-image: url(/assets/img/@homeMainSlider.PhotoName);">
-                <div class="caption caption-1" data-aos="fade-up" data-aos-duration="2000">
-                    @homeMainSlider.Title
+            foreach (var homeMainSlider in Model.HomeMainSliders)
+            {
+                <div class="banner-page banner-page-@videoOrder" style="background-image: url(/assets/img/@homeMainSlider.PhotoName);">
+                    <div class="caption caption-1" data-aos="fade-up" data-aos-duration="2000">
+                        @homeMainSlider.Title
+                    </div>
+                    <div class="auxilary-caption" data-aos="fade-up" data-aos-duration="2000">
+                        @Html.Raw(homeMainSlider.Description)
+                    </div>
+                    <div class="button" data-aos="fade-up" data-aos-duration="2000">
+                        <a href="@homeMainSlider.LearnUrl"> Learn more </a>
+                    </div>
                 </div>
-                <div class="auxilary-caption" data-aos="fade-up" data-aos-duration="2000">
-                    @Html.Raw(homeMainSlider.Description)
-                </div>
-                <div class="button" data-aos="fade-up" data-aos-duration="2000">
-                    <a href="@homeMainSlider.LearnUrl"> Learn more </a>
-                </div>
-            </div>
+                videoOrder++;
+            }
         }
+
         <div class="bullets">
             <div class="bullet bullet-1 selected"></div>
             <div class="bullet bullet-2"></div>
@@ -183,30 +189,30 @@
 
                 @foreach (var doctor in Model.Doctors)
                 {
-                   
-                 
-                        <div class="col-sm-12 col-md-6 col-lg-3  text-center" data-aos="fade-up" data-aos-duration="2000">
-                            <div class="doctor-item">
 
-                                <img style="width:180px; height:180px" src="~/assets/img/@doctor.MainPhoto" alt="">
-                                <div class="doctor-info">
-                                    <h4 class="doctor-name">@doctor.FullName</h4>
-                                    <p class="doctor-speciality">@doctor.Specialty</p>
-                                    <div class="social-media">
-                                        <a href="@doctor.FbUrl">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </a>
-                                        <a href="@doctor.TwUrl">
-                                            <i class="fab fa-twitter"></i>
-                                        </a>
-                                        <a href="@doctor.LiUrl">
-                                            <i class="fab fa-linkedin-in"></i>
-                                        </a>
-                                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-3  text-center" data-aos="fade-up" data-aos-duration="2000">
+                        <div class="doctor-item">
+
+                            <img style="width:180px; height:180px" src="~/assets/img/@doctor.MainPhoto" alt="">
+                            <div class="doctor-info">
+                                <h4 class="doctor-name">@doctor.FullName</h4>
+                                <p class="doctor-speciality">@doctor.Specialty</p>
+                                <div class="social-media">
+                                    <a href="@doctor.FbUrl">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="@doctor.TwUrl">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="@doctor.LiUrl">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                  
+                    </div>
+
                 }
 
             </div>
@@ -223,12 +229,14 @@
                 <div class="row">
                     <div class="why-choose-left col-lg-6" data-aos="fade-up" data-aos-duration="2000">
                         <h2 class="heading">
-                            @Model.HomeChooseComponent.Title
+                            @Html.Raw(@Model.HomeChooseComponent.Title)
                         </h2>
-                        @Html.Raw(Model.HomeChooseComponent.Description)
-
-                        @Html.Raw(Model.HomeChooseComponent.Text)
-
+                        @Html.Raw(@Model.HomeChooseComponent.Description)
+                        <ul class="checks">
+                            <ul class="checks">
+                                @Html.Raw(HttpUtility.HtmlDecode(@Model.HomeChooseComponent.Text))
+                            </ul>
+                        </ul>
                     </div>
                     <div class="why-choose-right col-lg-6 text-lg-right" data-aos="fade-up" data-aos-duration="2000">
                         <div style="background-image: url(/assets/img/@Model.HomeChooseComponent.PhotoName)">
@@ -240,35 +248,22 @@
 
         <!-- why-choose section ends -->
         <!-- count-to starts -->
-        <div class="container">
-            <div class="row align-items-center count-to no-select  " data-aos="fade-up" data-aos-duration="2000">
-                <div class=" col-12 col-md-4 col-lg-3  text-center count-item">
-                    <i class="fas fa-plus count-plus"></i>
-                    <p class='numscroller' data-min='1' data-max='@Model.HomeChooseComponent.Patient' data-delay='30' data-increment='10'></p>
-                    <span class="satisfied-patients">Satisfied Patients</span>
-                </div>
-                <div class="col-12 col-md-4 col-lg-3 mt-4 mt-md-0  text-center count-item">
-                    <i class="fas fa-plus count-plus"></i>
-                    <p class='numscroller' data-min='1' data-max='@Model.HomeChooseComponent.Doctor' data-delay='10' data-increment='5'></p>
-                    <span class="pro-doctor">Professional Doctor</span>
-                </div>
-                <div class=" col-12 col-md-4 col-lg-3 mt-4 mt-md-0 text-center count-item">
-                    <div class="d-flex justify-content-center">
-                        <p class='numscroller d-inline-block' data-min='1' data-max='@Model.HomeChooseComponent.Quality' data-delay='5'
-                       data-increment='2'></p>
-                        <p>%</p>
-                    </div>
-                    <span class="quality">Quality</span>
-                </div>
-                <div class="d-block  d-md-none d-lg-block col-12 col-lg-3 mt-4 mt-md-0 text-center count-item">
-                    <i class="fas fa-plus count-plus plus-experience"></i>
-                    <p class='numscroller' data-min='1' data-max='@Model.HomeChooseComponent.Experience' data-delay='2' data-increment='1'></p>
-                    <span class="year-experience">Year Experience</span>
-                </div>
-            </div>
-        </div>
         <!-- count-to ends -->
     }
+    <div class="container">
+        <div class="row align-items-center count-to no-select  " data-aos="fade-up" data-aos-duration="2000">
+
+            @foreach (var statistic in Model.Statistics)
+            {
+                <div class=" col-12 col-md-4 col-lg-3  text-center count-item">
+                    <i class="fas fa-plus count-plus"></i>
+                    <p class='numscroller' data-min='1' data-max='@statistic.Quantity' data-delay='30' data-increment='10'></p>
+                    <span class="satisfied-patients">@statistic.Title</span>
+                </div>
+
+            }
+        </div>
+    </div>
 
     <!-- latest-news section starts -->
     <section class="latest-news no-select">

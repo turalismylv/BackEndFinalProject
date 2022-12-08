@@ -22,9 +22,9 @@ namespace Web.Services.Concrete
 
         public async Task<DoctorIndexVM> GetAllAsync(DoctorIndexVM model)
         {
-            var pageCount = await _doctorRepository.GetPageCountAsync(model.Take);
+            var pageCount = await _doctorRepository.GetPageCountAsync(model.Take,model.FullName);
 
-            if (model.Page <= 0 || model.Page > pageCount) return model;
+            if (model.Page <= 0 /*|| model.Page > pageCount*/) return model;
 
             var doctors = await _doctorRepository.Filter(model.FullName,model.Page,model.Take);
 
@@ -33,7 +33,9 @@ namespace Web.Services.Concrete
                 Doctors = doctors,
                 Page = model.Page,
                 PageCount = pageCount,
-                Take = model.Take
+                Take = model.Take,
+                FullName=model.FullName
+                
                 
 
             };

@@ -33,7 +33,11 @@ namespace DataAccess.Repositories.Concrete
             return await _context.Baskets.Include(b => b.BasketProducts).ThenInclude(bp => bp.Product).FirstOrDefaultAsync(b => b.UserId == user.Id);
         }
 
-    
+
+        
+
+  
+
 
     }
   

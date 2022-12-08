@@ -10,5 +10,7 @@ namespace Web.Areas.Admin.Services.Abstract
         Task<DoctorUpdateVM> GetUpdateModelAsync(int id);
         Task<bool> UpdateAsync(DoctorUpdateVM model);
         Task<bool> DeleteAsync(int id);
+
+        Task<DoctorDetailsVM> GEtDetailsModelAsync(int id);
     }
 }

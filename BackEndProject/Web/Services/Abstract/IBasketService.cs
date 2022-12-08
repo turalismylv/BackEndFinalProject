@@ -6,14 +6,14 @@ namespace Web.Services.Abstract
 {
     public interface IBasketService
     {
-        Task<BasketIndexVM> GetAsync(ClaimsPrincipal user);
+        Task<BasketIndexVM> GetAsync();
 
-        Task<bool> Add(BasketAddVM model, ClaimsPrincipal userClaims);
-        Task<bool> DeleteBasketProduct(int productId, ClaimsPrincipal userClaims);
+        Task<bool> Add(BasketAddVM model);
+        Task<bool> DeleteBasketProduct(int productId);
 
-        Task<bool> UpCount(int productId, ClaimsPrincipal userClaims);
-        Task<bool> DownCount(int productId, ClaimsPrincipal userClaims);
+        Task<bool> UpCount(int productId);
+        Task<bool> DownCount(int productId);
 
-        Task<bool> ClearBasketProduct( ClaimsPrincipal userClaims);
+        Task<bool> ClearBasketProduct();
     }
 }

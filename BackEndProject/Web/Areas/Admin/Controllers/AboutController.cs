@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Web.Areas.Admin.Services.Abstract;
 using Web.Areas.Admin.ViewModels.AboutHome;
 using Web.Areas.Admin.ViewModels.AboutHome.AboutHomePhoto;
@@ -6,6 +7,7 @@ using Web.Areas.Admin.ViewModels.AboutHome.AboutHomePhoto;
 namespace Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class AboutController : Controller
     {
         
@@ -116,6 +118,14 @@ namespace Web.Areas.Admin.Controllers
             return View(model);
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var model = await _aboutService.GetDetailsModelAsync(id);
+            if (model == null) return NotFound();
+            return View(model);
+        }
         #endregion
     }
 }

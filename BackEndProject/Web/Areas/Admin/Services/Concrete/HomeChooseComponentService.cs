@@ -53,10 +53,6 @@ namespace Web.Areas.Admin.Services.Concrete
                 Description = model.Description,
                 CreatedAt = DateTime.Now,
                 PhotoName = await _fileService.UploadAsync(model.MainPhoto),
-                Doctor=model.Doctor,
-                Experience=model.Experience,
-                Patient=model.Patient,
-                Quality=model.Quality,
                 Text=model.Text,
             };
 
@@ -77,10 +73,6 @@ namespace Web.Areas.Admin.Services.Concrete
                 Description = homeChooseComponent.Description,
                 Title = homeChooseComponent.Title,
                 MainPhotoPath = homeChooseComponent.PhotoName,
-                Doctor=homeChooseComponent.Doctor,
-                Experience= homeChooseComponent.Experience,
-                Patient=homeChooseComponent.Patient,
-                Quality=homeChooseComponent.Quality,
                 Text = homeChooseComponent.Text,
                
             };
@@ -115,10 +107,6 @@ namespace Web.Areas.Admin.Services.Concrete
                 homeChooseComponent.Title = model.Title;
                 homeChooseComponent.ModifiedAt = DateTime.Now;
                 homeChooseComponent.Description = model.Description;
-                homeChooseComponent.Patient = model.Patient;
-                homeChooseComponent.Experience = model.Experience;
-                homeChooseComponent.Quality = model.Quality;
-                homeChooseComponent.Doctor = model.Doctor;
                 homeChooseComponent.Text = model.Text;
                 
 

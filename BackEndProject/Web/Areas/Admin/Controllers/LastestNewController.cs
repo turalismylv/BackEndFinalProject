@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Web.Areas.Admin.Services.Abstract;
 using Web.Areas.Admin.ViewModels.LastestNew;
 
 namespace Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class LastestNewController : Controller
     {
         private readonly ILastestNewService _lastestNewService;

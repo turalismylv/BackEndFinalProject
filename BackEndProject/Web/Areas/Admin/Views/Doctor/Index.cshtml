@@ -22,8 +22,8 @@
             <tr>
                 <td>@doctor.Id</td>
                 <td>@doctor.FullName</td>
-                 <td>@doctor.HomePageSee</td>
-                 <td>@doctor.PhoneNumber</td>
+                <td>@doctor.HomePageSee</td>
+                <td>@doctor.PhoneNumber</td>
                 <td>@doctor.CreatedAt.ToShortDateString()</td>
                 <td>@doctor.ModifiedAt.ToShortDateString()</td>
                 <td><img class="img-thumbnail" style="width:50px ; height:50px; object-fit:cover" src="~/assets/img/@doctor.MainPhoto" /></td>
@@ -33,6 +33,8 @@
                     <form method="post" asp-action="delete" asp-controller="doctor" asp-route-id="@doctor.Id">
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
+                    <a class="btn btn-info" asp-action="details" asp-controller="doctor" asp-route-id="@doctor.Id">Details</a>
+
                 </td>
             </tr>
         }

@@ -7,6 +7,7 @@ namespace Web.Services.Abstract
     {
         Task<DoctorIndexVM> GetAllAsync(DoctorIndexVM model);
 
+
         Task<DoctorDetailsVM> GetAsync(int id);
 
         

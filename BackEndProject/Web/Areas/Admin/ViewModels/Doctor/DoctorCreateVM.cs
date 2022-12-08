@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Core.Constans;
+using System.ComponentModel.DataAnnotations;
 
 namespace Web.Areas.Admin.ViewModels.Doctor
 {
@@ -6,11 +7,13 @@ namespace Web.Areas.Admin.ViewModels.Doctor
     {
         public string FullName { get; set; }
         public IFormFile MainPhoto { get; set; }
-        public string Specialty { get; set; }
+        public DoctorSpecialtys Specialty { get; set; }
         public string Qualification { get; set; }
+
+        [Required]
         public string PhoneNumber { get; set; }
 
-        [DataType(DataType.EmailAddress)]
+        [Required,DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         public string WorkingTime { get; set; }
         public string Skill { get; set; }

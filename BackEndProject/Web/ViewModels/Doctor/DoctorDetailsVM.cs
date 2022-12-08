@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Core.Constans;
+using System.ComponentModel.DataAnnotations;
 
 namespace Web.ViewModels.Doctor
 {
@@ -7,7 +8,7 @@ namespace Web.ViewModels.Doctor
         public int Id { get; set; }
         public string FullName { get; set; }
         public string MainPhoto { get; set; }
-        public string Specialty { get; set; }
+        public DoctorSpecialtys Specialty { get; set; }
         public string Qualification { get; set; }
         public string PhoneNumber { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Web.Areas.Admin.Services.Abstract;
 using Web.Areas.Admin.ViewModels.MedicalDepartament;
 
@@ -6,6 +7,7 @@ namespace Web.Areas.Admin.Controllers
 {
 
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class MedicalDepartamentController : Controller
     {
 

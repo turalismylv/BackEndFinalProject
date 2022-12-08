@@ -1,0 +1,34 @@
+﻿@using Web.ViewModels.Basket;
+@model BasketIndexVM;
+
+@{
+    if (Model.BasketProducts.Count > 0)
+    {
+        @foreach (var product in Model.BasketProducts)
+        {
+           
+                <li id="@product.Id" class="cart-item basket-product basketProduct" >
+                    <div class="cart-item-left">
+                        <div class="cart-product-image" style="background-image: url(/assets/img/@product.PhotoName)">
+                        </div>
+                    </div>
+                    <div class="cart-item-right">
+                        <p class="cart-product-name">@product.Title</p>
+                        <span class="cart-product-price-quantity">@product.Quantity × $@product.Price</span>
+                    </div>
+                    <i class="far fa-trash-alt " data-id="@product.Id" data-quantity="@product.Quantity" id="deleteButton"></i>
+                </li>
+
+        }
+        //<div class="total-price  justify-content-between">
+        //    <div class="subtotal">Subtotal:</div>
+        //    <div class="total-price-self"><span>$</span><span class="total-price-number">@pro</span></div>
+        //</div>
+        <div class="text-center"><a asp-action="index" asp-controller="basket" class="button">View Basket</a></div>
+         
+    }
+    else
+    {
+        <span class="no-cart-item">No Products In The Basket</span>
+    }
+}

@@ -15,22 +15,29 @@ namespace Web.Services.Concrete
         private readonly IBasketRepository _basketRepository;
         private readonly IBasketProductRepository _basketProductRepository;
         private readonly IProductRepository _productRepository;
+        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly UserManager<User> _userManager;
 
-        public BasketService(IBasketRepository basketRepository,IBasketProductRepository basketProductRepository, IProductRepository productRepository,IActionContextAccessor actionContextAccessor, UserManager<User> userManager)
+        public BasketService(IBasketRepository basketRepository,
+            IBasketProductRepository basketProductRepository,
+            IProductRepository productRepository,
+            IActionContextAccessor actionContextAccessor, 
+            IHttpContextAccessor httpContextAccessor,
+            UserManager<User> userManager)
         {
             _modelState = actionContextAccessor.ActionContext.ModelState;
             _basketRepository = basketRepository;
          _basketProductRepository = basketProductRepository;
             _productRepository = productRepository;
+            _httpContextAccessor = httpContextAccessor;
             _userManager = userManager;
         }
 
-        public async Task<BasketIndexVM> GetAsync(ClaimsPrincipal user)
+        public async Task<BasketIndexVM> GetAsync()
         {
 
 
-            var basket = await _basketRepository.GetBasket(user);
+            var basket = await _basketRepository.GetBasket(_httpContextAccessor.HttpContext.User);
 
             var model = new BasketIndexVM();
 
@@ -52,11 +59,11 @@ namespace Web.Services.Concrete
         }
 
 
-        public async Task<bool> Add(BasketAddVM model, ClaimsPrincipal userClaims)
+        public async Task<bool> Add(BasketAddVM model)
         {
             if (!_modelState.IsValid) return false;
 
-            var user = await _userManager.GetUserAsync(userClaims);
+            var user = await _userManager.GetUserAsync(_httpContextAccessor.HttpContext.User);
 
             if (user == null) return false;
 
@@ -64,7 +71,7 @@ namespace Web.Services.Concrete
 
             if (product == null) return false;
 
-            var basket = await _basketRepository.GetBasket(userClaims);
+            var basket = await _basketRepository.GetBasket(_httpContextAccessor.HttpContext.User);
 
             if (basket == null)
             {
@@ -100,20 +107,20 @@ namespace Web.Services.Concrete
             return true;
         }
 
-        public async Task<bool> DeleteBasketProduct(int productId, ClaimsPrincipal userClaims)
+        public async Task<bool> DeleteBasketProduct(int productId)
         {
-            var user = await _userManager.GetUserAsync(userClaims);
+            var user = await _userManager.GetUserAsync(_httpContextAccessor.HttpContext.User);
             if (user == null) return false;
 
-            var basket = await _basketRepository.GetBasket(userClaims);
+            var basket = await _basketRepository.GetBasket(_httpContextAccessor.HttpContext.User);
 
             var basketProduct = await _basketProductRepository.GetAsync(productId);
 
             if (basketProduct == null) return false;
 
-            //var product = await _productRepository.GetAsync(basketProduct.Id);
+            var product = await _productRepository.GetProduct(basketProduct.ProductId);
 
-            //if (product == null) return false;
+            if (product == null) return false;
 
             await _basketProductRepository.DeleteAsync(basketProduct);
 
@@ -121,20 +128,20 @@ namespace Web.Services.Concrete
 
         }
 
-        public async Task<bool> UpCount(int productId, ClaimsPrincipal userClaims)
+        public async Task<bool> UpCount(int productId)
         {
-            var user = await _userManager.GetUserAsync(userClaims);
+            var user = await _userManager.GetUserAsync(_httpContextAccessor.HttpContext.User);
             if (user == null) return false;
 
-            var basket = await _basketRepository.GetBasket(userClaims);
+            var basket = await _basketRepository.GetBasket(_httpContextAccessor.HttpContext.User);
 
             var basketProduct = await _basketProductRepository.GetAsync(productId);
 
             if (basketProduct == null) return false;
 
-            //var product = await _productRepository.GetAsync(basketProduct.Id);
+            var product = await _productRepository.GetProduct(basketProduct.ProductId);
 
-            //if (product == null) return false;
+            if (product == null) return false;
 
             basketProduct.Quantity++;
 
@@ -144,22 +151,26 @@ namespace Web.Services.Concrete
 
         }
 
-        public async Task<bool> DownCount(int productId, ClaimsPrincipal userClaims)
+        public async Task<bool> DownCount(int productId)
         {
-            var user = await _userManager.GetUserAsync(userClaims);
+            var user = await _userManager.GetUserAsync(_httpContextAccessor.HttpContext.User);
             if (user == null) return false;
 
-            var basket = await _basketRepository.GetBasket(userClaims);
+            var basket = await _basketRepository.GetBasket(_httpContextAccessor.HttpContext.User);
 
             var basketProduct = await _basketProductRepository.GetAsync(productId);
 
             if (basketProduct == null) return false;
 
-            //var product = await _productRepository.GetAsync(basketProduct.Id);
+            var product = await _productRepository.GetProduct(basketProduct.ProductId);
 
-            //if (product == null) return false;
+            if (product == null) return false;
 
-            basketProduct.Quantity--;
+
+            if (basketProduct.Quantity>1)
+            {
+                basketProduct.Quantity--;
+            }
 
             await _basketProductRepository.UpdateAsync(basketProduct);
 
@@ -167,20 +178,18 @@ namespace Web.Services.Concrete
 
         }
 
-        public async Task<bool> ClearBasketProduct( ClaimsPrincipal userClaims)
+        public async Task<bool> ClearBasketProduct()
         {
-            var user = await _userManager.GetUserAsync(userClaims);
+            var user = await _userManager.GetUserAsync(_httpContextAccessor.HttpContext.User);
             if (user == null) return false;
 
-            var basket = await _basketRepository.GetBasket(userClaims);
+            var basket = await _basketRepository.GetBasket(_httpContextAccessor.HttpContext.User);
 
             var basketProduct = await _basketProductRepository.GetAllAsync();
 
             if (basketProduct == null) return false;
 
-            //var product = await _productRepository.GetAsync(basketProduct.Id);
-
-            //if (product == null) return false;
+          
 
             foreach (var product in basketProduct)
             {

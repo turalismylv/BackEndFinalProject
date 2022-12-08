@@ -52,6 +52,12 @@
 
     $(document).on('click', '#addToCart', function () {
         var id = $(this).data('id');
+
+        var minibasketcount1 = $('#minibasketcount')
+        var minibasketcount = $('#minibasketcount').html();
+
+     
+
         console.log("Avara")
         $.ajax({
             method: "POST",
@@ -61,15 +67,39 @@
 
             },
             success: function (result) {
-
-                console.log(result);
-
+                minibasketcount++;
+                minibasketcount1.html("");
+                minibasketcount1.append(minibasketcount);
             }
+
+        })
+    })
+
+
+    $(document).on('click', '#openbasket', function () {
+
+        console.log("Avara")
+
+        $.ajax({
+            method: "GET",
+            url: "/basket/minibasket",
+           
+            success: function (result) {
+                $('#cartitemsdi').html("");
+                $('#cartitemsdi').append(result)
+            }
+
         })
     })
 
     $(document).on('click', '#deleteButton', function () {
         var id = $(this).data('id');
+
+        var minibasketcount = $('#minibasketcount').html();
+        var quantity = $(this).data('quantity');
+
+         var sum = minibasketcount - quantity;
+ 
 
         console.log("sil")
 
@@ -81,6 +111,9 @@
             },
             success: function (result) {
                 $(`.basketProduct[id=${id}]`).remove();
+
+                $('#minibasketcount').html("");
+                $('#minibasketcount').append(sum);
             }
 
         })
@@ -118,4 +151,4 @@
         })
     })
 })
-    
+

@@ -2,7 +2,7 @@
 @using Web.Areas.Admin.ViewModels.AboutHome
 @model AboutIndexVM
 
-@if (Model.AboutHome==null)
+@if (Model.AboutHome == null)
 {
     <a class="btn btn-primary" asp-action="create" asp-controller="about">Create</a>
 }
@@ -36,6 +36,8 @@
                     <form method="post" asp-action="delete" asp-controller="about" asp-route-id="@Model.AboutHome.Id">
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
+                    <a class="btn btn-info" asp-action="details" asp-controller="about" asp-route-id="@Model.AboutHome.Id">Details</a>
+
                 </td>
             </tr>
         }

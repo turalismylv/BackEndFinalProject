@@ -9,6 +9,7 @@ namespace Web.Services.Concrete
 {
     public class HomeService :IHomeService
     {
+        private readonly IStatisticRepository _statisticRepository;
         private readonly IDoctorRepository _doctorRepository;
         private readonly ILastestNewRepository _lastestNewRepository;
         private readonly IHomeChooseComponentRepository _homeChooseComponentRepository;
@@ -19,8 +20,9 @@ namespace Web.Services.Concrete
         private readonly IMedicalDepartamentRepository _medicalDepartamentRepository;
         private readonly ModelStateDictionary _modelState;
 
-        public HomeService(IDoctorRepository doctorRepository,ILastestNewRepository lastestNewRepository,IHomeChooseComponentRepository homeChooseComponentRepository,IHomeVideoComponentRepository homeVideoComponentRepository ,IHomeMainSliderRepository homeMainSliderRepository,IAboutRepository aboutRepository,IOurVisionRepository ourVisionRepository, IActionContextAccessor actionContextAccessor,IMedicalDepartamentRepository medicalDepartamentRepository)
+        public HomeService(IStatisticRepository statisticRepository,IDoctorRepository doctorRepository,ILastestNewRepository lastestNewRepository,IHomeChooseComponentRepository homeChooseComponentRepository,IHomeVideoComponentRepository homeVideoComponentRepository ,IHomeMainSliderRepository homeMainSliderRepository,IAboutRepository aboutRepository,IOurVisionRepository ourVisionRepository, IActionContextAccessor actionContextAccessor,IMedicalDepartamentRepository medicalDepartamentRepository)
         {
+            _statisticRepository = statisticRepository;
             _doctorRepository = doctorRepository;
             _lastestNewRepository = lastestNewRepository;
             _homeChooseComponentRepository = homeChooseComponentRepository;
@@ -38,13 +40,14 @@ namespace Web.Services.Concrete
             var model = new HomeIndexVM
             {
                 HomeMainSliders = await _homeMainSliderRepository.GetAllAsync(),
-                ourVisions=await _ourVisionRepository.GetAllAsync(),
+                ourVisions = await _ourVisionRepository.GetAllAsync(),
                 medicalDepartaments = await _medicalDepartamentRepository.GetAllAsync(),
-                About=await _aboutRepository.GetWithPhotosAsync(),
-                homeVideoComponent=await _homeVideoComponentRepository.GetAsync(),
-                HomeChooseComponent=await _homeChooseComponentRepository.GetAsync(),
-                LastestNews=await _lastestNewRepository.GetOrderByAsync(),
-                Doctors=await _doctorRepository.GetHomeDoctorAsync(),
+                About = await _aboutRepository.GetWithPhotosAsync(),
+                homeVideoComponent = await _homeVideoComponentRepository.GetAsync(),
+                HomeChooseComponent = await _homeChooseComponentRepository.GetAsync(),
+                LastestNews = await _lastestNewRepository.GetOrderByAsync(),
+                Doctors = await _doctorRepository.GetHomeDoctorAsync(),
+                Statistics = await _statisticRepository.GetAllAsync()
             };
             return model;
 

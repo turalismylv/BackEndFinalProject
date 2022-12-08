@@ -101,6 +101,38 @@ namespace Web.Areas.Admin.Services.Concrete
             return model;
 
         }
+
+
+        public async Task<DoctorDetailsVM> GEtDetailsModelAsync(int id)
+        {
+
+
+            var doctor = await _doctorRepository.GetAsync(id);
+
+            if (doctor == null) return null;
+
+            var model = new DoctorDetailsVM
+            {
+                Id = doctor.Id,
+                FullName = doctor.FullName,
+                Description = doctor.Description,
+                MainPhotoName = doctor.MainPhoto,
+                Skill = doctor.Skill,
+                Specialty = doctor.Specialty,
+                HomePageSee = doctor.HomePageSee,
+                Email = doctor.Email,
+                FbUrl = doctor.FbUrl,
+                LiUrl = doctor.LiUrl,
+                PhoneNumber = doctor.PhoneNumber,
+                Qualification = doctor.Qualification,
+                TwUrl = doctor.TwUrl,
+                WorkingTime = doctor.WorkingTime,
+
+            };
+
+            return model;
+
+        }
         public async Task<bool> UpdateAsync(DoctorUpdateVM model)
         {
             if (!_modelState.IsValid) return false;

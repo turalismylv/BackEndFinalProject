@@ -17,11 +17,6 @@ namespace Core.Entities
 
         public string PhotoName { get; set; }
 
-        public int Patient { get; set; }
-
-        public int Doctor { get; set; }
-
-        public int Quality { get; set; }
-        public int Experience { get; set; }
+       
     }
 }

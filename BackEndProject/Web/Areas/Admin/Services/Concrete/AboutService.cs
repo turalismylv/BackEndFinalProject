@@ -137,6 +137,30 @@ namespace Web.Areas.Admin.Services.Concrete
 
         }
 
+
+        public async Task<AboutDetailsVM> GetDetailsModelAsync(int id)
+        {
+
+
+
+            var aboutHome = await _aboutRepository.GetAsync(id);
+
+            if (aboutHome == null) return null;
+
+            var model = new AboutDetailsVM
+            {
+                Id = aboutHome.Id,
+                Description = aboutHome.Description,
+                Title = aboutHome.Title,
+                MainPhotoPath = aboutHome.MainPhoto,
+                aboutHomePhotos = await _aboutPhotoRepository.GetAllAsync(),
+
+            };
+
+            return model;
+
+        }
+
         public async Task<bool> UpdateAsync(AboutUpdateVM model)
         {
             if (!_modelState.IsValid) return false;

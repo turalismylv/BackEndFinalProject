@@ -13,8 +13,9 @@
                     <h3 class="fw-normal mb-0 text-black">Basket Cart</h3>
 
                 </div>
-
-                @foreach (var basketProduct in Model.BasketProducts)
+                @if (Model.BasketProducts.Count>0)
+                {
+                    @foreach (var basketProduct in Model.BasketProducts)
                 {
                     <div class="card rounded-3 mb-4 basketProduct" id=@basketProduct.Id>
                         <div class="card-body p-4">
@@ -42,12 +43,19 @@
                                     <h5 class="mb-0">$@basketProduct.Price</h5>
                                 </div>
                                 <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                    <button id="deleteButton" data-id="@basketProduct.Id" class="text-danger"><i class="fas fa-trash fa-lg"></i></button>
+                                    <button id="deleteButton" data-id="@basketProduct.Id" data-quantity="@basketProduct.Quantity" class="text-danger"><i class="fas fa-trash fa-lg"></i></button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    }
                 }
+                else
+                {
+                     <p class="empty-cart-alert" style="">Your basket is currently empty.</p>
+                }
+               
+                
             </div>
         </div>
     </div>
@@ -58,55 +66,18 @@
                 <div class="row cart-buttons">
                     <div class="col-12 col-xl-8 text-center text-lg-right text-xl-left">
                         <a asp-action="index" asp-controller="shop" class="button continue">Continue Shopping</a>
-                        <input type="text" placeholder="ENTER YOUR COUPON" class="coupon">
-                        <div class="button confirm">Confirm</div>
+                       
                     </div>
                     <div class="col-12 col-xl-4 text-center text-lg-right mt-0 mt-sm-5 mt-xl-0">
                         
                         <button  class="button clear">Clear Cart</button>
-                        <div class="button update">Update Cart</div>
-                        <div class="deliver pt-5">
-                            <div class="container">
-                                <div class="row  deliver-parametr">
-                                    <div class="col-6 text-left">Subtotal:</div>
-                                    <div class="col-6 text-left">
-                                        <span>$</span><span class="total-price-num">79.99</span>
-                                    </div>
-                                </div>
-                                <div class="row deliver-parametr align-items-center">
-                                    <div class="col-6 text-left">Shipping:</div>
-                                    <div class="col-6 text-left">
-                                        <div>
-                                            <input type="radio" name="shipping" id="" class="mr-2" checked=""><span>
-                                                Free
-                                                Shipping
-                                            </span>
-                                        </div>
-                                        <div>
-                                            <input type="radio" name="shipping" id="" class="mr-2"><span>
-                                                Flat
-                                                rate
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row deliver-parametr text-left">
-                                    <div class="col-6">Total:</div>
-                                    <div class="col-6 text-left">
-                                        <span>$</span><span class="total-price-num">79.99</span>
-                                    </div>
-                                </div>
-                                <a href="checkout.html" class="button d-block mt-4 text-center">
-                                    Proceed To
-                                    Checkout
-                                </a>
-                            </div>
-                        </div>
+                      
+                 
                     </div>
                 </div>
             </form>
-            <p class="empty-cart-alert" style="display: none;">Your basket is currently empty.</p>
-            <a href="sidebar-left.html" class="return-btn button" style="display: none;">Return To Shop</a>
+            
+           
         </div>
     </section>
 </section>

@@ -22,10 +22,11 @@ namespace DataAccess.Repositories.Concrete
 
      
 
-        public async Task<int> GetPageCountAsync(int take)
+        public async Task<int> GetPageCountAsync(int take,string fullName)
         {
-            var blogsCount = await _context.Doctors.CountAsync();
-            return (int)Math.Ceiling((decimal)blogsCount / take);
+            var doctors = FilterByTitle(fullName);
+            var pagecount = await doctors.CountAsync();
+            return (int)Math.Ceiling((decimal)pagecount / take);
 
         }
 

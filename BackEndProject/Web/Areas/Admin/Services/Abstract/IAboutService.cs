@@ -15,5 +15,6 @@ namespace Web.Areas.Admin.Services.Abstract
         Task<bool> DeletePhotoAsync(int id);
         Task<AboutPhotoUpdateVM> GetPhotoUpdateModelAsync(int id);
         Task<bool> UpdatePhotoAsync(AboutPhotoUpdateVM model);
+        Task<AboutDetailsVM> GetDetailsModelAsync(int id);
     }
 }

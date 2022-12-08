@@ -1,0 +1,21 @@
+﻿@using Core.Constants
+@using Web.Areas.Admin.ViewModels.Statistic
+@model StatisticUpdateVM
+
+<form enctype="multipart/form-data" asp-action="update" asp-controller="statistic" method="post">
+
+     <div class="form-group">
+        <label asp-for="Title">Title</label>
+        <input class="form-control" asp-for="Title">
+        <span asp-validation-for="Title"></span>
+    </div>
+  
+       <div class="form-group">
+        <label asp-for="Quantity">Quantity</label>
+        <input class="form-control" asp-for="Quantity">
+        <span asp-validation-for="Quantity"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a class="btn btn-danger" asp-action="index" asp-controller="statistic">Cancel</a>
+</form>

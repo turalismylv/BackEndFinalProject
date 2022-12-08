@@ -1,4 +1,5 @@
 ﻿using DataAccess.Repositories.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Web.Areas.Admin.Services.Abstract;
 using Web.Areas.Admin.ViewModels.OurVision;
@@ -6,6 +7,7 @@ using Web.Areas.Admin.ViewModels.OurVision;
 namespace Web.Areas.Admin.Controllers
 {
     [Area("admin")]
+    [Authorize(Roles = "Admin")]
     public class OurVisionController : Controller
     {
         private readonly IOurVisionService _ourVisionService;

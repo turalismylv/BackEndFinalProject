@@ -1,4 +1,5 @@
-﻿using Core.Entities.Base;
+﻿using Core.Constans;
+using Core.Entities.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,7 +14,7 @@ namespace Core.Entities
         public string FullName { get; set; }
 
         public string MainPhoto { get; set; }
-        public string Specialty { get; set; }
+        public DoctorSpecialtys Specialty { get; set; }
         public string Qualification { get; set; }
         public string PhoneNumber { get; set; }
 
