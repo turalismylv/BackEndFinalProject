@@ -15,5 +15,7 @@ namespace Web.Services.Abstract
         Task<bool> DownCount(int productId);
 
         Task<bool> ClearBasketProduct();
+
+        
     }
 }

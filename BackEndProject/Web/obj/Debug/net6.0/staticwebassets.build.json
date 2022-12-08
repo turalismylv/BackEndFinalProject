@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MPGjvTZ0yAIHo3Lq2J7LRXbJSulDbHci1C6FVXlpLC4=",
+  "Hash": "FBE1OWUNwu+etF68Da1NsJqVFu4LM+Vh/YL7Y+QFMYI=",
   "Source": "Web",
   "BasePath": "_content/Web",
   "Mode": "Default",
@@ -34236,6 +34236,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\2c59463f-2687-48bb-832a-25dd3d4dee69_clinic2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\tursl\\OneDrive\\Desktop\\CODEACADEMY\\HomeWorks\\BackEndFinalProject\\BackEndProject\\Web\\wwwroot\\assets\\img\\37d4ef54-6e12-47ac-bc4d-3febd64fdfd5_banner-image-1.jpg",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tursl\\OneDrive\\Desktop\\CODEACADEMY\\HomeWorks\\BackEndFinalProject\\BackEndProject\\Web\\wwwroot\\",
+      "BasePath": "_content/Web",
+      "RelativePath": "assets/img/37d4ef54-6e12-47ac-bc4d-3febd64fdfd5_banner-image-1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\37d4ef54-6e12-47ac-bc4d-3febd64fdfd5_banner-image-1.jpg"
     },
     {
       "Identity": "C:\\Users\\tursl\\OneDrive\\Desktop\\CODEACADEMY\\HomeWorks\\BackEndFinalProject\\BackEndProject\\Web\\wwwroot\\assets\\img\\392df4e0-c851-4a69-89e0-842642c217be_about-2.jpg",

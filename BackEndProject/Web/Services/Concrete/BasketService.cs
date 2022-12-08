@@ -185,10 +185,9 @@ namespace Web.Services.Concrete
 
             var basket = await _basketRepository.GetBasket(_httpContextAccessor.HttpContext.User);
 
-            var basketProduct = await _basketProductRepository.GetAllAsync();
+            var basketProduct = await _basketProductRepository.GetAllBasketProduct(basket.Id);
 
             if (basketProduct == null) return false;
-
           
 
             foreach (var product in basketProduct)

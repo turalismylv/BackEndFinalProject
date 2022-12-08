@@ -12,5 +12,6 @@ namespace DataAccess.Repositories.Abstract
     {
         Task<BasketProduct> GetBasketProduct(int productId, int basketId);
         Task<int> GetUserBasketProductCount(ClaimsPrincipal userClaims);
+        Task<List<BasketProduct>> GetAllBasketProduct(int basketId);
     }
 }

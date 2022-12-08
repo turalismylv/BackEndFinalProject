@@ -29,6 +29,13 @@ namespace DataAccess.Repositories.Concrete
             return basketProduct;
         }
 
+        public async Task<List<BasketProduct>> GetAllBasketProduct(int basketId)
+        {
+            var basketProduct = await _context.BasketProducts.Where(b => b.BasketId == basketId).ToListAsync();
+
+            return basketProduct;
+        }
+
         public async Task<int> GetUserBasketProductCount(ClaimsPrincipal userClaims)
         {
             var user = await _userManager.GetUserAsync(userClaims);
