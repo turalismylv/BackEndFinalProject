@@ -27,13 +27,6 @@ namespace Web.Services.Concrete
         {
             if (!_modelState.IsValid) return false;
 
-            var isExist = await _userManager.FindByEmailAsync(model.Email);
-            if (isExist!=null)
-            {
-                _modelState.AddModelError("Email", "Bu email  mövcuddur");
-                return false;
-            }
-
             var user = new User
             {
                 PhoneNumber = model.PhoneNumber,

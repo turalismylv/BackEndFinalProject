@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3MnkjdzFFy5ITdPEqOKB+rxpI16r3PNvYfqqjloKuPQ=",
+  "Hash": "sDOQSP3Q7Y5+AlX7PYtw6AkvKcPI+MxlGBz4TqkJ/dQ=",
   "Source": "Web",
   "BasePath": "_content/Web",
   "Mode": "Default",
@@ -34187,23 +34187,6 @@
       "OriginalItemSpec": "wwwroot\\assets\\img\\1f61bd2c-7ac7-4914-8ea2-f40e53aac599_product-6.jpg"
     },
     {
-      "Identity": "C:\\Users\\tursl\\OneDrive\\Desktop\\CODEACADEMY\\HomeWorks\\BackEndFinalProject\\BackEndProject\\Web\\wwwroot\\assets\\img\\2455ee3d-6453-4436-b001-807d92e6ab9c_Elvin.JPG",
-      "SourceId": "Web",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tursl\\OneDrive\\Desktop\\CODEACADEMY\\HomeWorks\\BackEndFinalProject\\BackEndProject\\Web\\wwwroot\\",
-      "BasePath": "_content/Web",
-      "RelativePath": "assets/img/2455ee3d-6453-4436-b001-807d92e6ab9c_Elvin.JPG",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\img\\2455ee3d-6453-4436-b001-807d92e6ab9c_Elvin.JPG"
-    },
-    {
       "Identity": "C:\\Users\\tursl\\OneDrive\\Desktop\\CODEACADEMY\\HomeWorks\\BackEndFinalProject\\BackEndProject\\Web\\wwwroot\\assets\\img\\24f469ed-3042-497f-86c7-35c453288b15_signature.png",
       "SourceId": "Web",
       "SourceType": "Discovered",
@@ -35239,23 +35222,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\f278f3f2-7db6-4f37-9ba2-22d746bbed75_banner-image-2.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\tursl\\OneDrive\\Desktop\\CODEACADEMY\\HomeWorks\\BackEndFinalProject\\BackEndProject\\Web\\wwwroot\\assets\\img\\f3b1df4e-804d-44b3-b501-f8caad6fb52b_banner-image-3.jpg",
-      "SourceId": "Web",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\tursl\\OneDrive\\Desktop\\CODEACADEMY\\HomeWorks\\BackEndFinalProject\\BackEndProject\\Web\\wwwroot\\",
-      "BasePath": "_content/Web",
-      "RelativePath": "assets/img/f3b1df4e-804d-44b3-b501-f8caad6fb52b_banner-image-3.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\img\\f3b1df4e-804d-44b3-b501-f8caad6fb52b_banner-image-3.jpg"
     },
     {
       "Identity": "C:\\Users\\tursl\\OneDrive\\Desktop\\CODEACADEMY\\HomeWorks\\BackEndFinalProject\\BackEndProject\\Web\\wwwroot\\assets\\img\\f52fd714-c10c-42c0-afe5-a14e89bd27bc_why-choose-photo.jpg",
